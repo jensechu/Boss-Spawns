@@ -1,3 +1,5 @@
+{% load boss_filters %}
+
 <h1>{{ server.name }}</h1>
 
 <table>
@@ -15,7 +17,7 @@
 	  {{ boss.name }}
 	</td>
 	<td>
-	  [[ NEXT_SPAWN ]]
+	  {{ boss|next_spawn:server }}
 	</td>
 	<td>
 	  {{ boss.zone }}

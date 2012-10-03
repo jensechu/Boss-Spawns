@@ -21,6 +21,15 @@ class Boss(models.Model):
     name = models.CharField(max_length=200)
     respawn_rate = models.IntegerField('respawn rate in seconds') 
     zone = models.ForeignKey(Zone)
+
+    def next_spawn(self, server):
+        death_time = DeathCount.objects.filter(boss=self, server=server)
+        try:
+            death_time = death_time.latest('died_at')
+        except DeathCount.DoesNotExist:
+            return "Unknown"
+
+        return death_time.died_at
     
     def __unicode__(self):
         return self.name
