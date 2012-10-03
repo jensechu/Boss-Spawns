@@ -9,7 +9,7 @@ class Boss(models.Model):
         ('FS', 'Frostgorge Sound')
     )
     name = models.CharField(max_length=200)
-    respawn_rate = TimeField('respawn time')
+    respawn_rate = models.TimeField('respawn time')
     boss_location = models.CharField(max_length=5, choices=ZONES)
 
 class DeathCount(models.Model):
