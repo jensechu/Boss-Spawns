@@ -1,4 +1,8 @@
 # Django settings for bossspawns project.
+from os import path
+
+# The directory containing this file
+DJANGO_BASE = path.dirname(__file__)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,8 +15,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/Users/jensen/venvs/bossspawns/src/Boss-Spawns/bossspawns/fyeahdata.db',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': path.realpath(path.join(DJANGO_BASE, '..', '..', 'db.db')) # #{Root of the checkout}/db.db
     }
 }
 
