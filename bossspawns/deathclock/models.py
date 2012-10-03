@@ -27,7 +27,7 @@ class Boss(models.Model):
         try:
             death_time = death_time.latest('died_at')
         except DeathCount.DoesNotExist:
-            return "Unknown"
+            return None
         
         delta = timedelta(seconds=self.respawn_rate)
 
