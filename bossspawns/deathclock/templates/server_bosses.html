@@ -14,7 +14,7 @@
     {% for boss in bosses %}
       <tr>
 	<td>
-	  {{ boss.name }}
+	  <a href="{% url server-boss server.pk boss.pk %}">{{ boss.name }}</a>
 	</td>
 	<td>
 	  {{ boss|next_spawn:server }}

@@ -15,3 +15,11 @@ def server(request, server_id=None):
             'server': server,
             'bosses': bosses
     })
+
+def boss(request, server_id, boss_id):
+    server = get_object_or_404(Server, pk=server_id)
+    boss = get_object_or_404(Boss, pk=boss_id)
+    return render_to_response('boss_details.html', {
+            'server': server,
+            'boss': boss
+    })
