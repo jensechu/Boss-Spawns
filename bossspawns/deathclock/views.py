@@ -1,12 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
-from deathclock.models import Boss
+from deathclock.models import Server
 
 def home(request):
-    bosses = Boss.objects.all()
-    return render_to_response('bosses.html', {'boss_list': bosses})
+    servers = Server.objects.all()
+    return render_to_response('select_server.html', {'server_list': servers})
 
-def detail(request, boss_id):
-    boss = get_object_or_404(Boss, pk=boss_id)
-    return render_to_response('boss_detail.html', {"boss": boss})
-    
+def server(request, server_id=None):
+    if server_id == None:
+        server_id = request.GET.get('server', None)
+    server = get_object_or_404(Server, pk=server_id)
+    return render_to_response('server_bosses.html', {'server': server})
