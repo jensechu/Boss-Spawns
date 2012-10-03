@@ -33,5 +33,5 @@ class DeathCount(models.Model):
     server = models.ForeignKey(Server)
 
     def __unicode__(self):
-        return "%s, %s" % (self.boss.name, self.get_server_display())
+        return "%s, %s" % (self.boss.name, self.server.name)
 
