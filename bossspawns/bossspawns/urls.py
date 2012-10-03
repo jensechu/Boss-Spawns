@@ -5,10 +5,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'deathclock.views.home', name='home'),
-    url(r'^server/$', 'deathclock.views.server'),
-    url(r'^server/(?P<server_id>\d+)/$', 'deathclock.views.server', name='server'),
-    url(r'^server/(?P<server_id>\d+)/boss/(?P<boss_id>\d+)/$', 'deathclock.views.boss', name='server-boss'),
+    url(r'^$', 'bossspawns.deathclock.views.home', name='home'),
+    url(r'^server/$', 'bossspawns.deathclock.views.server'),
+    url(r'^server/(?P<server_id>\d+)/$', 'bossspawns.deathclock.views.server', name='server'),
+    url(r'^server/(?P<server_id>\d+)/boss/(?P<boss_id>\d+)/$', 'bossspawns.deathclock.views.boss', name='server-boss'),
 
     url(r'^admin/', include(admin.site.urls)),
 )

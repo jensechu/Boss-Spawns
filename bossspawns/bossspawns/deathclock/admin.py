@@ -1,5 +1,5 @@
 from django.contrib import admin
-from deathclock.models import Server, Zone, Boss, DeathCount
+from bossspawns.deathclock.models import Server, Zone, Boss, DeathCount
 
 class DeathCountAdmin(admin.ModelAdmin):
     list_display = ('boss', 'server')
