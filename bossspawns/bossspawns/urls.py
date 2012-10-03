@@ -6,7 +6,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'deathclock.views.home', name='home'),
-    url(r'^server/', 'deathclock.views.server', name='server'),
+    url(r'^server/$', 'deathclock.views.server'),
+    url(r'^server/(?P<server_id>\d+)/$', 'deathclock.views.server', name='server'),
 
     url(r'^admin/', include(admin.site.urls)),
 )

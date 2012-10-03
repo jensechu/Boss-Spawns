@@ -7,6 +7,7 @@ def home(request):
     return render_to_response('select_server.html', {'server_list': servers})
 
 def server(request, server_id=None):
+    print server_id
     if server_id == None:
         server_id = request.GET.get('server', None)
     server = get_object_or_404(Server, pk=server_id)
