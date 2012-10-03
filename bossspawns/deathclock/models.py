@@ -9,17 +9,15 @@ class Boss(models.Model):
         ('FS', 'Frostgorge Sound')
     )
     name = models.CharField(max_length=200)
-    respawn_rate = models.TimeField('respawn time')
-    boss_location = models.CharField(max_length=5, choices=ZONES)
+    respawn_rate = models.TimeField('respawn rate') 
+    location = models.CharField(max_length=5, choices=ZONES)
 
 class DeathCount(models.Model):
     """ """
     SERVERS = (
         ('JQ', 'Jade Quarry'),
-        ('DH', 'Dark Haven')
+        ('DH', 'Darkhaven')
     )
     boss = models.ForeignKey(Boss)
-    death_time = models.TimeField('time of death')
+    time = models.TimeField('time of death')
     server = models.CharField(max_length=5, choices=SERVERS)
-    
-
