@@ -16,7 +16,7 @@ class Boss(models.Model):
         return self.name
 
 class DeathCount(models.Model):
-    """ """
+    """ Time intervals for the Boss' """
     SERVERS = (
         ('JQ', 'Jade Quarry'),
         ('DH', 'Darkhaven'),
