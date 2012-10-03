@@ -1,5 +1,6 @@
 from datetime import timedelta
 from django.db import models
+from timezones import TimeZoneField
 
 class Server(models.Model):
     """Guild Wars 2 Server"""
