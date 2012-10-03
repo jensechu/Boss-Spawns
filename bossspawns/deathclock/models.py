@@ -1,5 +1,5 @@
+from datetime import timedelta
 from django.db import models
-
 
 class Server(models.Model):
     """Guild Wars 2 Server"""
@@ -28,8 +28,10 @@ class Boss(models.Model):
             death_time = death_time.latest('died_at')
         except DeathCount.DoesNotExist:
             return "Unknown"
+        
+        delta = timedelta(seconds=self.respawn_rate)
 
-        return death_time.died_at
+        return death_time.died_at + delta
     
     def __unicode__(self):
         return self.name
