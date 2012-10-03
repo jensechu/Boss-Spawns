@@ -1,10 +1,11 @@
 from datetime import timedelta
 from django.db import models
-from timezones import TimeZoneField
+from timezones.fields import TimeZoneField
 
 class Server(models.Model):
     """Guild Wars 2 Server"""
     name = models.CharField(max_length=50)
+    tz = TimeZoneField('server time zone')
 
     def __unicode__(self):
         return self.name
