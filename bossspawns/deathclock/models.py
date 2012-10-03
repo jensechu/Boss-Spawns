@@ -9,7 +9,7 @@ class Boss(models.Model):
         ('FS', 'Frostgorge Sound')
     )
     name = models.CharField(max_length=200)
-    respawn_rate = models.TimeField('respawn rate') 
+    respawn_rate = models.IntegerField('respawn rate in seconds') 
     location = models.CharField(max_length=5, choices=ZONES)
     
     def __unicode__(self):
