@@ -38,7 +38,7 @@ class DeathCount(models.Model):
     """Time intervals for the Boss'"""
 
     boss = models.ForeignKey(Boss)
-    died_at = models.TimeField('time of death')
+    died_at = models.DateTimeField('time of death')
     server = models.ForeignKey(Server)
 
     def __unicode__(self):
