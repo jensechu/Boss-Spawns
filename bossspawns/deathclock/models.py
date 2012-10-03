@@ -25,3 +25,6 @@ class DeathCount(models.Model):
     boss = models.ForeignKey(Boss)
     time = models.TimeField('time of death')
     server = models.CharField(max_length=5, choices=SERVERS)
+
+    def __unicode__(self):
+        return "%s, %s" % (self.boss.name, self.get_server_display())
