@@ -12,6 +12,7 @@ $ virtualenv ve
 # [.. virtualenv is build ..]
 $ . ve/bin/activate
 $ pip install -r requirements.txt
+$ python setup.py develop
 $ django-admin.py syncdb --settings=bossspawn.settings
 $ django-admin.py runserver --settings=bossspawn.settings
 ```
