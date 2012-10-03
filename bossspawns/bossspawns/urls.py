@@ -6,7 +6,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'bossspawns.views.home', name='home'),
+    url(r'^$', 'deathclock.views.home', name='home'),
+    url(r'^boss/(?P<boss_id>\d+)/$', 'deathclock.views.detail', name='details'),
     # url(r'^bossspawns/', include('bossspawns.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
