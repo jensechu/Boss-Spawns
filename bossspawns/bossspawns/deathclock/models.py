@@ -1,4 +1,5 @@
 from datetime import timedelta
+from django.contrib.auth.models import User
 from django.db import models
 from timezones.fields import TimeZoneField
 
@@ -44,6 +45,7 @@ class DeathCount(models.Model):
     boss = models.ForeignKey(Boss)
     died_at = models.DateTimeField('time of death')
     server = models.ForeignKey(Server)
+    user = models.ForeignKey(User)
 
     def __unicode__(self):
         return "%s, %s" % (self.boss.name, self.server.name)

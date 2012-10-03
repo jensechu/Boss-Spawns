@@ -1,3 +1,22 @@
+{% load boss_filters %}
+
 <h1>{{ server.name }}</h1>
 
 <h2>{{ boss.name }}</h2>
+
+<h3>{{ boss.zone }}</h3>
+
+<table>
+  <thead>
+    <tr>
+      <td>Estimated Spawn Times</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+	{{ boss|next_spawn:server }}
+      </td>
+    </tr>
+  </tbody>
+</table>
