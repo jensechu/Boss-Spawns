@@ -1,1 +1,26 @@
 <h1>{{ server.name }}</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Spawn</th>
+      <th>Zone</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for boss in bosses %}
+      <tr>
+	<td>
+	  {{ boss.name }}
+	</td>
+	<td>
+	  [[ NEXT_SPAWN ]]
+	</td>
+	<td>
+	  {{ boss.zone }}
+	</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
