@@ -1,8 +1,10 @@
 from django.contrib import admin
-from deathclock.models import Boss, DeathCount
+from deathclock.models import Server, Zone, Boss, DeathCount
 
 class DeathCountAdmin(admin.ModelAdmin):
     list_display = ('boss', 'server')
 
-admin.site.register(Boss)
+for model in (Server, Zone, Boss):
+    admin.site.register(model)
+
 admin.site.register(DeathCount, DeathCountAdmin)
