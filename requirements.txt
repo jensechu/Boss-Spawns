@@ -1,5 +1,8 @@
+## Reqs
 django
 -e git://github.com/brosner/django-timezones.git#egg=django-timezones
 pytz
 South
 
+## Install myself
+-e .
