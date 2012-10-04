@@ -40,6 +40,17 @@ $ echo 'export DJANGO_SETTINGS_MODULE=bossspawns.settings' >> ve/bin/activate
 
 ### Deploy notes
 
-This app can be deployed to heroku.
+This app can be deployed to Heroku. It requires that the 'DJANGO_SETTINGS_MODULE' be set
+and that the `user-env-compile` setting is on so that the correct settings are loaded during deploy.
 
-**TODO: Describe how**
+To setup a heroku deployment of this app, install the Heroku tools and perform the following steps:
+
+```bash
+$ heroku create
+$ heroku config:set DJANGO_SETTINGS_MODULE=bossspawns.heroku
+$ heroku labs:enable user-env-compile
+$ git push heroku
+$ heroku run python manage.py syncdb
+# .. And fill out the admin form .. #
+$ heroku open
+```

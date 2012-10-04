@@ -1,5 +1,8 @@
 from bossspawns.settings import *
 
+## This is the bigs now
+DEBUG = False
+
 ## Real webserver
 INSTALLED_APPS += ('gunicorn',)
 
