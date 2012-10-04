@@ -1,5 +1,18 @@
 {% load boss_filters %}
 
+{% if user.is_authenticated %}
+
+<form action="" method="post">{% csrf_token %}
+  {{ death_form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+
+{% else %}
+
+You're not logged in.
+
+{% endif %}
+
 <h1>{{ server.name }}</h1>
 
 <h2>{{ boss.name }}</h2>
