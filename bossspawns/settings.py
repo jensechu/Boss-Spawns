@@ -16,7 +16,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': path.realpath(path.join(DJANGO_BASE, '..', '..', 'db.db')) # #{Root of the checkout}/db.db
+        'NAME': path.realpath(path.join(DJANGO_BASE, '..', 'db.db')) # #{Root of the checkout}/db.db
     }
 }
 
