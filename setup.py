@@ -10,8 +10,6 @@ setup(
     author_email = "jensechu@gmail.com",
     license = "BSD",
 
-    package_dir = {'': 'bossspawns'},
-
     packages = [
         "bossspawns",
         "bossspawns.deathclock",
