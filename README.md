@@ -11,8 +11,7 @@ $ cd Boss-Spawns
 $ virtualenv ve
 # [.. virtualenv is build ..]
 $ . ve/bin/activate
-$ pip install -r requirements.txt
-$ python setup.py develop
+$ pip install -r requirements.local.txt
 $ django-admin.py syncdb --settings=bossspawns.settings
 $ django-admin.py runserver --settings=bossspawns.settings
 ```
@@ -37,4 +36,21 @@ the enviroment is activated with `. ve/bin/activate`
 
 ```bash
 $ echo 'export DJANGO_SETTINGS_MODULE=bossspawns.settings' >> ve/bin/activate
+```
+
+### Deploy notes
+
+This app can be deployed to Heroku. It requires that the 'DJANGO_SETTINGS_MODULE' be set
+and that the `user-env-compile` setting is on so that the correct settings are loaded during deploy.
+
+To setup a heroku deployment of this app, install the Heroku tools and perform the following steps:
+
+```bash
+$ heroku create
+$ heroku config:set DJANGO_SETTINGS_MODULE=bossspawns.heroku
+$ heroku labs:enable user-env-compile
+$ git push heroku
+$ heroku run python manage.py syncdb
+# .. And fill out the admin form .. #
+$ heroku open
 ```
