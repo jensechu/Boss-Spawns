@@ -25,3 +25,12 @@ def boss(request, server_id, boss_id):
             'boss': boss,
             'death_form': DeathCountForm
     })
+
+def boss_death(request, server_id, boss_id):
+    server = get_object_or_404(Server, pk=server_id)
+    boss = get_object_or_404(Boss, pk=boss_id)
+    return render(request, 'boss_details.html', {
+            'server': server,
+            'boss': boss,
+            'death_form': DeathCountForm
+    })
