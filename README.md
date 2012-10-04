@@ -37,3 +37,9 @@ the enviroment is activated with `. ve/bin/activate`
 ```bash
 $ echo 'export DJANGO_SETTINGS_MODULE=bossspawns.settings' >> ve/bin/activate
 ```
+
+### Deploy notes
+
+This app can be deployed to heroku.
+
+**TODO: Describe how**
