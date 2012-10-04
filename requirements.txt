@@ -1,5 +1,8 @@
-django
--e git://github.com/brosner/django-timezones.git#egg=django-timezones
-pytz
-South
+-r requirements.base.txt
 
+## Heroku production
+psycopg2
+dj-database-url
+
+## Use a better server
+gunicorn
