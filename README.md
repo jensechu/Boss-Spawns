@@ -49,7 +49,7 @@ To setup a heroku deployment of this app, install the Heroku tools and perform t
 $ heroku create
 $ heroku config:set DJANGO_SETTINGS_MODULE=bossspawns.heroku
 $ heroku labs:enable user-env-compile
-$ git push heroku
+$ git push heroku master
 $ heroku run python manage.py syncdb
 # .. And fill out the admin form .. #
 $ heroku open
