@@ -3,3 +3,6 @@
 ## Heroku production
 psycopg2
 dj-database-url
+
+## Use a better server
+gunicorn
