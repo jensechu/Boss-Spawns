@@ -4,5 +4,8 @@ django
 pytz
 South
 
+## Nose
+django-nose
+
 ## Install myself
 -e .

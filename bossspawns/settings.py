@@ -132,7 +132,11 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'bossspawns.deathclock',
     'south',
+    'django_nose'
 )
+
+## Nose runs tests now
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
