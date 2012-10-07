@@ -26,9 +26,9 @@ class Boss(models.Model):
     zone = models.ForeignKey(Zone)
 
     def next_spawn(self, server):
-        death_time = DeathCount.objects.filter(boss=self, server=server)
         try:
-            death_time = death_time.latest('died_at')
+            death_time = DeathCount.objects.server(server).boss(self).latest()
+
         except DeathCount.DoesNotExist:
             return None
         
@@ -39,8 +39,15 @@ class Boss(models.Model):
     def __unicode__(self):
         return self.name
 
+from bossspawns.deathclock.managers import DeathCountManager
 class DeathCount(models.Model):
     """Time intervals for the Boss'"""
+    
+    class Meta: 
+        ordering = ['-died_at']
+        get_latest_by = "died_at"
+
+    objects = DeathCountManager()
 
     boss = models.ForeignKey(Boss)
     died_at = models.DateTimeField('time of death')
