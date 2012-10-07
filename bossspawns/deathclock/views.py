@@ -2,7 +2,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.views.decorators.http import require_POST
-from bossspawns.deathclock.models import Server, Boss
+from django.contrib.auth.decorators import login_required
+from bossspawns.deathclock.models import Server, Boss, DeathCount
 from bossspawns.deathclock.forms import DeathCountForm
 
 def home(request):
@@ -29,6 +30,7 @@ def boss(request, server_id, boss_id):
     })
 
 @require_POST
+@login_required
 def boss_death(request, server_id, boss_id):
     print request.POST
     server = get_object_or_404(Server, pk=server_id)
@@ -36,7 +38,15 @@ def boss_death(request, server_id, boss_id):
     
     form = DeathCountForm(request.POST)
     if form.is_valid():
+        death_count = DeathCount.objects.create(
+            user=request.user, 
+            boss=boss, 
+            server=server, 
+            died_at=form.cleaned_data['death_time']
+        )
+        
         return HttpResponseRedirect(reverse('server-boss', args=[server.pk, boss.pk]))
+
     return render(request, 'boss_details.html', {
             'server': server,
             'boss': boss,
