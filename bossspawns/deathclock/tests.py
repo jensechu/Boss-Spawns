@@ -52,3 +52,6 @@ class BossTest(TestCase):
     def test_next_spawn_not_in_past(self):
         self.assertIsNone(self.old_boss_with_data.next_spawn(self.server), 'Spawn time would be in the past.')
         
+    def test_next_spawn_is_in_future(self):
+        now = TZ.localize(datetime.now())
+        self.assertGreater(self.boss_with_data.next_spawn(self.server), now, 'Spawn time should be in the future.')

@@ -62,5 +62,8 @@ class DeathCount(models.Model):
     server = models.ForeignKey(Server)
     user = models.ForeignKey(User)
 
+    def server_death_time(self):
+        return self.died_at.replace(tzinfo=self.server.tz)
+
     def __unicode__(self):
         return "%s, %s" % (self.boss.name, self.server.name)
