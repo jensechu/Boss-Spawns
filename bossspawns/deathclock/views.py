@@ -38,13 +38,7 @@ def boss_death(request, server_id, boss_id):
     
     form = DeathCountForm(request.POST)
     if form.is_valid():
-        death_count = DeathCount.objects.create(
-            user=request.user, 
-            boss=boss, 
-            server=server, 
-            died_at=form.cleaned_data['death_time']
-        )
-        
+        form.save(request.user, boss, server)
         return HttpResponseRedirect(reverse('server-boss', args=[server.pk, boss.pk]))
 
     return render(request, 'boss_details.html', {
