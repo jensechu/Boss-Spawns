@@ -4,6 +4,7 @@ from django.conf import settings
 from django.test import TestCase
 from django.contrib.auth.models import User
 from bossspawns.deathclock.models import Boss, Zone, Server, DeathCount
+from bossspawns.deathclock.forms import DeathCountForm
 
 ## A timezone object parsed from the timezone
 ## name set in django.conf.settings
@@ -55,3 +56,18 @@ class BossTest(TestCase):
     def test_next_spawn_is_in_future(self):
         now = TZ.localize(datetime.now())
         self.assertGreater(self.boss_with_data.next_spawn(self.server), now, 'Spawn time should be in the future.')
+
+class DeathFormTest(TestCase):
+    longMessage = True
+    def setUp(self):
+        self.data = {'death_time': '2012-10-07 16:56:38'}
+        self.user = User.objects.create_user("jensen")
+        self.server = Server.objects.create(name="Jade Quarry", tz=settings.TIME_ZONE)
+        self.zone = Zone.objects.create(name="Sparkfly Fen")
+        self.boss = Boss.objects.create(name="Tequatl", respawn_rate=10800, zone=self.zone)
+
+    def test_form_save(self):
+        form = DeathCountForm(self.data)
+        data = form.save(self.user, self.boss, self.server)
+        self.assertIsNotNone(data)
+        self.assertIsInstance(data, DeathCount)

@@ -7,6 +7,8 @@ class DeathCountForm(forms.Form):
     death_time = forms.DateTimeField(label='Time of death', initial=datetime.now)
 
     def save(self, user, boss, server):
+        if not self.is_valid():
+            return None
         death_time = self.cleaned_data['death_time'].replace(tzinfo=server.tz)
         death_count = DeathCount.objects.create(
             user=user, 
