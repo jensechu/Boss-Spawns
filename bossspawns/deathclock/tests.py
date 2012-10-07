@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from pytz import timezone
 from django.conf import settings
 from django.test import TestCase
@@ -28,6 +28,17 @@ class BossTest(TestCase):
             user=self.user
         )
 
+        self.old_boss_with_data = Boss.objects.create(name="The Slava", respawn_rate=15800, zone=self.zone)
+
+        now = TZ.localize(datetime.now())
+        past = timedelta(days=31)
+        self.death_time = DeathCount.objects.create(
+            boss=self.old_boss_with_data, 
+            died_at=now - past,
+            server=self.server, 
+            user=self.user
+        )
+
     def test_have_boss(self):
         count = Boss.objects.count()
         self.assertGreater(count, 0, 'No bosses found')
@@ -37,3 +48,7 @@ class BossTest(TestCase):
 
     def test_next_spawn_known(self):
         self.assertIsNotNone(self.boss_with_data.next_spawn(self.server), 'Boss should have a spawn time')
+    
+    def test_next_spawn_not_in_past(self):
+        self.assertIsNone(self.old_boss_with_data.next_spawn(self.server), 'Spawn time would be in the past.')
+        

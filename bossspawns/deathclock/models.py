@@ -1,7 +1,11 @@
-from datetime import timedelta
+from datetime import timedelta, datetime
+from pytz import timezone
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from timezones.fields import TimeZoneField
+
+TZ = timezone(settings.TIME_ZONE)
 
 class Server(models.Model):
     """Guild Wars 2 Server"""
@@ -34,7 +38,11 @@ class Boss(models.Model):
         
         delta = timedelta(seconds=self.respawn_rate)
 
-        return death_time.died_at + delta
+        spawn = death_time.died_at + delta
+        if spawn > TZ.localize(datetime.now()):
+            return spawn
+        else:
+            return None
     
     def __unicode__(self):
         return self.name
