@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from timezones.fields import TimeZoneField
+from bossspawns.deathclock.managers import DeathCountManager
 
 TZ = timezone(settings.TIME_ZONE)
 
@@ -43,11 +44,11 @@ class Boss(models.Model):
             return spawn
         else:
             return None
-    
+
     def __unicode__(self):
         return self.name
 
-from bossspawns.deathclock.managers import DeathCountManager
+
 class DeathCount(models.Model):
     """Time intervals for the Boss'"""
     
