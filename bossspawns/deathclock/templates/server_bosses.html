@@ -1,5 +1,7 @@
+{% extends "base.html" %}
 {% load boss_filters %}
 
+{% block content %}
 <h1>{{ server.name }}</h1>
 
 <table>
@@ -26,3 +28,5 @@
     {% endfor %}
   </tbody>
 </table>
+
+{% endblock %}

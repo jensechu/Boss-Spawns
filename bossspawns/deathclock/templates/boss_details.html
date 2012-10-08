@@ -1,6 +1,8 @@
+{% extends "base.html" %}
 {% load boss_filters %}
 {% load vote %}
 
+{% block content %}
 {% if user.is_authenticated %}
 
 <form action="{% url boss-death server.pk boss.pk %}" method="post">{% csrf_token %}
@@ -47,3 +49,4 @@ You're not logged in.
     {% endfor %}
   </tbody>
 </table>
+{% endblock %}

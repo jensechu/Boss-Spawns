@@ -104,7 +104,7 @@ ROOT_URLCONF = 'bossspawns.urls'
 WSGI_APPLICATION = 'bossspawns.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join(DJANGO_BASE, "templates"),
+    path.join(DJANGO_BASE, "templates"),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

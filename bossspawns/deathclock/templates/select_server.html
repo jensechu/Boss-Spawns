@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 <h1>Select your server:</h1>
 <form action="/server/" method="get">
   <select name="server">
@@ -9,3 +12,4 @@
 
   </select>
 </form>
+{% endblock %}
