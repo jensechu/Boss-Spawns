@@ -104,9 +104,7 @@ ROOT_URLCONF = 'bossspawns.urls'
 WSGI_APPLICATION = 'bossspawns.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(DJANGO_BASE, "templates"),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -134,6 +132,7 @@ INSTALLED_APPS = (
     'bossspawns.vote',
     'south',
     'django_nose',
+    'registration',
 )
 
 ## Nose runs tests now
