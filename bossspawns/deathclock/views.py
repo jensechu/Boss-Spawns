@@ -26,7 +26,7 @@ def boss(request, server_id, boss_id):
     return render(request, 'boss_details.html', {
             'server': server,
             'boss': boss,
-            'deaths': DeathCount.objects.in_spawn_range(boss, server)
+            'deaths': DeathCount.objects.in_spawn_range(boss, server),
             'death_form': DeathCountForm
     })
 
@@ -45,6 +45,6 @@ def boss_death(request, server_id, boss_id):
     return render(request, 'boss_details.html', {
             'server': server,
             'boss': boss,
-            'deaths': DeathCount.objects.in_spawn_range(boss, server)
+            'deaths': DeathCount.objects.in_spawn_range(boss, server),
             'death_form': form
     })
