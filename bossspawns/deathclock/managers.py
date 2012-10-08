@@ -13,7 +13,10 @@ class DeathFiltersMixin(object):
 
 class DeathCountManager(models.Manager, DeathFiltersMixin):
     class DeathQuerySet(QuerySet, DeathFiltersMixin):
-        pass
+        def by_vote(self):
+            def key(death_count):
+                return death_count.votes.count()
+            return sorted(self, key=key, reverse=True)
 
     def get_query_set(self):
         return self.DeathQuerySet(self.model)

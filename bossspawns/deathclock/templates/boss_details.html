@@ -30,11 +30,11 @@ You're not logged in.
     </tr>
   </thead>
   <tbody>
-    {% for death in deaths %}
+    {% for death in deaths.by_vote %}
     <tr>
       <td>
 	{% vote_form death %}
-	{% vote_count death %}
+	{{ death.votes.count }}
       </td>
       <td>
 	{{ death.died_at }}

@@ -11,4 +11,3 @@ class Vote(models.Model):
     content_type = models.ForeignKey(ContentType)
     thing_id = models.PositiveIntegerField()
     thing = generic.GenericForeignKey('content_type', 'thing_id')
-    
