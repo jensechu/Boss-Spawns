@@ -19,17 +19,21 @@ You're not logged in.
 
 <h3>{{ boss.zone }}</h3>
 
+<h3>Next Spawn Time: {{ boss|next_spawn:server }}</h3>
+
 <table>
   <thead>
     <tr>
-      <td>Estimated Spawn Times</td>
+      <th>Recent Death Times</th>
     </tr>
   </thead>
   <tbody>
+    {% for death in deaths %}
     <tr>
       <td>
-	{{ boss|next_spawn:server }}
+	{{ death.died_at }}
       </td>
     </tr>
+    {% endfor %}
   </tbody>
 </table>
