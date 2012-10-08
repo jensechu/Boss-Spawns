@@ -60,9 +60,6 @@ class DeathCount(models.Model):
     def server_death_time(self):
         return self.died_at.replace(tzinfo=self.server.tz)
 
-    def content_type(self):
-        from django.contrib.contenttypes.models import ContentType
-        return ContentType.objects.get_for_model(self)
 
     def __unicode__(self):
         return "%s, %s" % (self.boss.name, self.server.name)
