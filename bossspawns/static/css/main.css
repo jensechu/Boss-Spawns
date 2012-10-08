@@ -160,6 +160,7 @@ p.not-logged-in {
     font-size: 1.5em;
     color: #CCF390;
     margin: 15px 0px 0px 0px;
+    width: 200px;
 }
 
 #next-spawn form {
