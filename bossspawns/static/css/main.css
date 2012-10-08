@@ -17,7 +17,7 @@ body {
 #header {
     min-width: 500px;
     width: 800px;
-    float: left;
+    height: 80px;
     margin: 0px 50px 50px 50px;
     border-bottom: 2px solid black;
 }
@@ -28,9 +28,11 @@ body {
     float: left;
 }
 
-#header h1 {
+#header h1 a {
+    text-decoration: none;
+    color: black;
     font-family: Roman;
-    font-size: 2.5em;
+    font-size: 1.5em;
 }
 
 #header-login {
@@ -41,7 +43,7 @@ body {
 
 #content {
     margin: 0px 50px;
-    height: 300px;
+    min-height: 100px;
     border-bottom: 2px solid black;
     padding-bottom: 50px;
 }
@@ -63,21 +65,37 @@ body {
     float: left;
 }
 
+#server-bosses h1 {
+    font-weight: lighter;
+    font-family: sans-serif;
+    margin-bottom: 45px;
+}
+
 #server-bosses table {
     width: 800px;
 }
 
 #server-bosses th {
     font-variant: small-caps;
-    font-size: 1.2em;
+    font-size: 1.4em;
 }
 
 #server-bosses tbody tr:nth-child(odd) {
     background-color: white;
 }
 
-#server-bosses tbody tr {
-    height: 15px;
+#server-bosses tbody tr td {
+    height: 55px;
+    font-family: sans-serif;
+    font-size: 1.2em;
+}
+
+#server-bosses tbody tr td a {
+    color: green;
+}
+
+#server-bosses tbody tr td a:hover {
+    color: yellow;
 }
 
 a.header-login {
