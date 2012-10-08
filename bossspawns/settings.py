@@ -131,8 +131,9 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'bossspawns.deathclock',
+    'bossspawns.vote',
     'south',
-    'django_nose'
+    'django_nose',
 )
 
 ## Nose runs tests now

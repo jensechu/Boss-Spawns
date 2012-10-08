@@ -24,12 +24,20 @@ You're not logged in.
 <table>
   <thead>
     <tr>
+      <th>Votes</th>
       <th>Recent Death Times</th>
     </tr>
   </thead>
   <tbody>
     {% for death in deaths %}
     <tr>
+      <td>
+	<form method="POST" action="{% url submit-vote %}">{% csrf_token %}
+	  <input type="hidden" name="content_type" value="{{ death.content_type.app_label }}.{{ death.content_type.model }}" />
+	  <input type="hidden" name="thing_id" value="{{ death.pk }}"/>
+	  <input type="submit" value="vote" />
+	</form>
+      </td>
       <td>
 	{{ death.died_at }}
       </td>
