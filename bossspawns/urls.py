@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^server/(?P<server_id>\d+)/boss/(?P<boss_id>\d+)/death/$', 'bossspawns.deathclock.views.boss_death', name='boss-death'),
 
     url(r'^vote/', include('bossspawns.vote.urls')),
-
+    url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
 

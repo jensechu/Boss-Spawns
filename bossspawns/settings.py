@@ -135,6 +135,14 @@ INSTALLED_APPS = (
     'registration',
 )
 
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda o: "/",
+}
+
+ACCOUNT_ACTIVATION_DAYS = 1
+
+LOGIN_REDIRECT_URL = "/"
+
 ## Nose runs tests now
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
