@@ -35,10 +35,11 @@ class Boss(models.Model):
 
     def next_spawn(self, server):
         deaths = DeathCount.objects.in_spawn_range(self, server)
-        try:
-            death = deaths.latest()
-        except:
+        death = deaths.by_vote()
+        if len(death) == 0:
             return None
+        else:
+            death = death[0]
         return death.died_at + timedelta(seconds=self.respawn_rate)
 
     def __unicode__(self):
