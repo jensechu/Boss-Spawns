@@ -3,33 +3,43 @@
 {% load vote %}
 
 {% block content %}
-{% if user.is_authenticated %}
 
-<form action="{% url boss-death server.pk boss.pk %}" method="post">{% csrf_token %}
-  {{ death_form.as_p }}
-<input type="submit" value="Submit" />
-</form>
+<div id="detail-titles">
+  <h1>{{ server.name }} ||</h1><h2>{{ boss.name }},</h2> <h3>{{ boss.zone }}</h3>
+</div>
 
-{% else %}
+<div id="next-spawn">
+  <div id="spawn">
+    <h3>next spawn time</h3>
+    <h4>{{ boss|next_spawn:server }}</h4>
+  </div>
+  <div id="death">
+    <h3>submit when boss dies</h3>
+    {% if user.is_authenticated %}
+    
+    <form action="{% url boss-death server.pk boss.pk %}" method="post">{% csrf_token %}
+      {{ death_form.as_p }}
+      <input type="submit" value="Submit" />
+    </form>
 
-You're not logged in. <a href="{% url registration_register %}">Register here.</a> or <a href="{% url auth_login %}">Log In.</a>
+    {% else %}
+
+    <p>You're not logged in. <a href="{% url registration_register %}">Register here.</a> or <a href="{% url auth_login %}">Log In.</a></p>
 
 
-{% endif %}
+    {% endif %}
+  </div>
+</div>
 
-<h1>{{ server.name }}</h1>
 
-<h2>{{ boss.name }}</h2>
 
-<h3>{{ boss.zone }}</h3>
 
-<h3>Next Spawn Time: {{ boss|next_spawn:server }}</h3>
 
 <table>
-  <thead>
+  <thead align=left>
     <tr>
-      <th>Votes</th>
-      <th>Recent Death Times</th>
+      <th>votes</th>
+      <th>recent death times</th>
     </tr>
   </thead>
   <tbody>
@@ -38,8 +48,6 @@ You're not logged in. <a href="{% url registration_register %}">Register here.</
       <td>
 	{% if user.is_authenticated %}
 	{% vote_form death %}
-	{% else %}
-	<p>Login to vote.</p>
 	{% endif %}
 	{{ death.votes.count }}
       </td>

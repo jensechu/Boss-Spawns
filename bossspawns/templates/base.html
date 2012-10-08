@@ -16,7 +16,7 @@
 	  {% if user.is_authenticated %}
           <p class="left">Hi, {{ user.username }} <a href="{% url auth_logout %}" class="header-login">Log Out</a></p>
 	  {% else %}  
-	  <p>You're not logged in.
+	  <p class="not-logged-in">You're not logged in.
 	  <a href="{% url registration_register %}">Register here.</a> or 
 	  <a href="{% url auth_login %}">Log In.</a>
 	  </p>

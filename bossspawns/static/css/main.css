@@ -41,6 +41,11 @@ body {
     margin-top: 25px;
 }
 
+p.not-logged-in {
+    position: relative;
+    bottom: 15px;
+}
+
 #content {
     margin: 0px 50px;
     min-height: 100px;
@@ -65,37 +70,98 @@ body {
     float: left;
 }
 
-#server-bosses h1 {
+#content h1 {
     font-weight: lighter;
     font-family: sans-serif;
     margin-bottom: 45px;
 }
 
-#server-bosses table {
+#content table {
     width: 800px;
 }
 
-#server-bosses th {
+#content th {
     font-variant: small-caps;
     font-size: 1.4em;
 }
 
-#server-bosses tbody tr:nth-child(odd) {
+#content tbody tr:nth-child(odd) {
     background-color: white;
 }
 
-#server-bosses tbody tr td {
+#content tbody tr td {
     height: 55px;
     font-family: sans-serif;
     font-size: 1.2em;
 }
 
-#server-bosses tbody tr td a {
+#content tbody tr td a {
     color: green;
 }
 
-#server-bosses tbody tr td a:hover {
+#content tbody tr td a:hover {
     color: yellow;
+}
+
+#detail-titles {
+    height: 25px;
+    margin-bottom: 50px;
+}
+
+#detail-titles h1, h2, h3{
+    margin: 0px;
+    position: relative;
+    float: left;
+}
+
+#detail-titles h2 {
+    font-size: 2em;
+    font-weight: lighter;
+    margin-left: 10px;
+}
+
+#detail-titles h3 {
+    font-size: 1.5em;
+    font-weight: lighter;
+    margin: 7px 0px 0px 10px;
+   
+}
+
+#next-spawn {
+    height: 100px;
+}
+
+#next-spawn div {
+    height: 100px;
+    width: 300px;
+    position: relative;
+    float: left;
+    margin-bottom: 25px;
+}
+
+#next-spawn h3 {
+    position: relative;
+    float: left;
+    font-variant: small-caps;
+    border-bottom: 1px solid black;
+    font-size: 1.5em;
+}
+
+#next-spawn h4 {
+    position: relative;
+    float: left;
+    font-size: 1.5em;
+    color: red;
+    margin: 15px 0px 0px 0px;
+}
+
+#next-spawn form {
+    margin: 40px 0px 0px 0px;
+}
+
+#death p {
+    margin-top: 45px;
+    width: 230px;
 }
 
 a.header-login {
