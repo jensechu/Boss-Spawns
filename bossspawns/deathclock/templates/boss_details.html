@@ -33,7 +33,11 @@ You're not logged in.
     {% for death in deaths.by_vote %}
     <tr>
       <td>
+	{% if user.is_authenticated %}
 	{% vote_form death %}
+	{% else %}
+	<p>Login to vote.</p>
+	{% endif %}
 	{{ death.votes.count }}
       </td>
       <td>
