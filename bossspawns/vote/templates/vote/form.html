@@ -1,0 +1,5 @@
+<form method="POST" action="{% url submit-vote %}">{% csrf_token %}
+  <input type="hidden" name="content_type" value="{{ content_type.app_label }}.{{ content_type.model }}" />
+  <input type="hidden" name="thing_id" value="{{ thing.pk }}"/>
+  <input type="submit" value="vote" />
+</form>

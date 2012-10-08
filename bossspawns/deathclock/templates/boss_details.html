@@ -1,4 +1,5 @@
 {% load boss_filters %}
+{% load vote %}
 
 {% if user.is_authenticated %}
 
@@ -32,11 +33,7 @@ You're not logged in.
     {% for death in deaths %}
     <tr>
       <td>
-	<form method="POST" action="{% url submit-vote %}">{% csrf_token %}
-	  <input type="hidden" name="content_type" value="{{ death.content_type.app_label }}.{{ death.content_type.model }}" />
-	  <input type="hidden" name="thing_id" value="{{ death.pk }}"/>
-	  <input type="submit" value="vote" />
-	</form>
+	{% vote_form death %}
       </td>
       <td>
 	{{ death.died_at }}
