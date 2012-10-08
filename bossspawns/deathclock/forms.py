@@ -1,5 +1,6 @@
 from django import forms
 from datetime import datetime
+import pytz
 from pytz import timezone
 from bossspawns.deathclock.models import DeathCount
 
@@ -10,6 +11,7 @@ class DeathCountForm(forms.Form):
         if not self.is_valid():
             return None
         death_time = self.cleaned_data['death_time'].replace(tzinfo=server.tz)
+        death_time = death_time.astimezone(pytz.utc)
         death_count = DeathCount.objects.create(
             user=user, 
             boss=boss, 

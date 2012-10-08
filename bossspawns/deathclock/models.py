@@ -1,6 +1,7 @@
 from datetime import timedelta, datetime
 from pytz import timezone
 from django.conf import settings
+from django.utils.timezone import now
 from django.contrib.auth.models import User
 from django.db import models
 from timezones.fields import TimeZoneField
@@ -31,19 +32,12 @@ class Boss(models.Model):
     zone = models.ForeignKey(Zone)
 
     def next_spawn(self, server):
+        deaths = DeathCount.objects.in_spawn_range(self, server)
         try:
-            death_time = DeathCount.objects.server(server).boss(self).latest()
-
-        except DeathCount.DoesNotExist:
+            death = deaths.latest()
+        except:
             return None
-        
-        delta = timedelta(seconds=self.respawn_rate)
-
-        spawn = death_time.died_at + delta
-        if spawn > TZ.localize(datetime.now()):
-            return spawn
-        else:
-            return None
+        return death.died_at + timedelta(seconds=self.respawn_rate)
 
     def __unicode__(self):
         return self.name

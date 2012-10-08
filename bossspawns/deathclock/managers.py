@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from django.utils.timezone import now
 from django.db import models
 from django.db.models.query import QuerySet
+import pytz
 
 class DeathFiltersMixin(object):
     def server(self, server):
@@ -20,5 +21,5 @@ class DeathCountManager(models.Manager, DeathFiltersMixin):
     def in_spawn_range(self, boss, server):
         death_qs =  self.boss(boss).server(server)
         limit = now() - timedelta(seconds=boss.respawn_rate)
-        limit = limit.astimezone(server.tz)
+        limit = limit.astimezone(pytz.utc)
         return death_qs.filter(died_at__gte=limit)
