@@ -2,18 +2,19 @@
 {% load boss_filters %}
 
 {% block content %}
-<h1>{{ server.name }}</h1>
+<div id="server-bosses">
+  <h1>{{ server.name }}</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Spawn</th>
-      <th>Zone</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for boss in bosses %}
+  <table>
+    <thead align=left>
+      <tr>
+	<th>Name</th>
+	<th>Spawn</th>
+	<th>Zone</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for boss in bosses %}
       <tr>
 	<td>
 	  <a href="{% url server-boss server.pk boss.pk %}">{{ boss.name }}</a>
@@ -25,8 +26,9 @@
 	  {{ boss.zone }}
 	</td>
       </tr>
-    {% endfor %}
-  </tbody>
-</table>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 
 {% endblock %}
