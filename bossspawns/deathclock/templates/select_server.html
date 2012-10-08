@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Select your server:</h1>
-<form action="/server/" method="get">
-  <select name="server">
-    {% for server in server_list %}
-    <option value="{{ server.pk }}">{{ server.name }}</option>
-    {% endfor %}
+<div id="content-select">
+  <h2>Select your server:</h2>
+  <form action="/server/" method="get">
+    <select name="server">
+      {% for server in server_list %}
+      <option value="{{ server.pk }}">{{ server.name }}</option>
+      {% endfor %}
 
-    <input type="submit" value="Select" />
+      <input type="submit" value="Select" />
 
-  </select>
-</form>
+    </select>
+  </form>
+</div>
 {% endblock %}
