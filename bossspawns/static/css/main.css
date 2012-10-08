@@ -30,16 +30,16 @@ body {
 
 #header h1 a {
     text-decoration: none;
-    color: black;
+    color: #BF0B0B;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
     font-family: Roman;
     font-size: 1.5em;
 }
 
 #header h1 a:hover {
     text-decoration: none;
-    color: #BF0B0B;
-   -webkit-text-stroke-width: 1px;
-   -webkit-text-stroke-color: black;
+    color: black;
 }
 
 #header-login {
