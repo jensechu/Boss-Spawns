@@ -32,6 +32,8 @@ TIME_ZONE = 'US/Pacific'
 LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
+GOOGLE_ANALYTICS_MODEL = True
+GOOGLE_ANALYTICS_TRACK_PAGE_LOAD_TIME = True
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -131,6 +133,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'bossspawns.deathclock',
     'bossspawns.vote',
+    'google_analytics',
     'south',
     'django_nose',
     'registration',
