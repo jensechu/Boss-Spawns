@@ -2,12 +2,41 @@
 {% load boss_filters %}
 {% load vote %}
 
+{% block extra_js %}
+<script type="text/javascript">
+window.server_time = new Date(
+  {{ server_time.year }}, 
+  {{ server_time.month }}, 
+  {{ server_time.day }}, 
+  {{ server_time.hour }}, 
+  {{ server_time.minute }}, 
+  {{ server_time.second }}
+);
+
+window.spawn_time = null;
+{% with next_spawn=boss|next_spawn:server %}
+  {% if next_spawn %}
+    window.spawn_time = new Date(
+      {{ next_spawn.year }}, 
+      {{ next_spawn.month }}, 
+      {{ next_spawn.day }}, 
+      {{ next_spawn.hour }}, 
+      {{ next_spawn.minute }}, 
+      {{ next_spawn.second }}
+    );
+  {% endif %}
+{% endwith %}
+
+</script>
+{% endblock %}
+
 {% block content %}
 
 <div id="detail-titles">
   <h1>{{ server.name }} ||</h1><h2>{{ boss.name }},</h2> <h3>{{ boss.zone }}</h3>
 </div>
   <h3 class="note">Server Timezone: {{ server.tz }}. Submit when a boss dies in server time.</h3>
+  <h3>Server Time: {{ server_time }}</h3>
 <div id="next-spawn">
   <div id="spawn">
     <h3>next spawn time</h3>

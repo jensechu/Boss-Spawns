@@ -43,7 +43,7 @@ class Boss(models.Model):
             return None
         else:
             death = death[0]
-        return death.died_at + timedelta(seconds=self.respawn_rate)
+        return death.died_at.astimezone(server.tz) + timedelta(seconds=self.respawn_rate)
 
     def __unicode__(self):
         return self.name

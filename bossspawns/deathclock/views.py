@@ -1,3 +1,4 @@
+from django.utils.timezone import now
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
@@ -27,7 +28,8 @@ def boss(request, server_id, boss_id):
             'server': server,
             'boss': boss,
             'deaths': DeathCount.objects.in_spawn_range(boss, server),
-            'death_form': DeathCountForm
+            'death_form': DeathCountForm,
+            'server_time': now().astimezone(server.tz)
     })
 
 @require_POST
