@@ -55,7 +55,7 @@ p.not-logged-in {
 
 #content {
     margin: 0px 50px;
-    min-height: 100px;
+    min-height: 175px;
     border-bottom: 2px solid black;
     padding-bottom: 50px;
 }
@@ -69,6 +69,14 @@ p.not-logged-in {
     margin: 0px;
     position: relative;
     float: left;
+}
+
+#content-select p {
+    position: relative;
+    float: left;
+    font-family: sans-serif;
+    font-weight: lighter;
+    font-size: .9em;
 }
 
 #content-select form {
@@ -196,4 +204,9 @@ table input {
 
 a.header-login:visited {
     color: #A3BBDF;
+}
+
+#content img {
+    border: 1px solid black;
+    margin-top: 25px;
 }
