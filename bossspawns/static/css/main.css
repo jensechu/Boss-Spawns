@@ -174,13 +174,12 @@ p.not-logged-in {
 #next-spawn form {
     margin: 40px 0px 0px 0px;
 }
-
-#death p {
+#death_form p {
     margin-top: 45px;
     width: 230px;
 }
 
-#death p input {
+#death_form p input {
     width: 126px;
 }
 
@@ -209,4 +208,19 @@ a.header-login:visited {
 #content img {
     border: 1px solid black;
     margin-top: 25px;
+}
+
+#boss_countdown {
+    margin-top: 10px;
+    background-color: #6C666E;
+    border: 0px;
+    right: 30px;
+}
+
+#boss_countdown .countdown_amount {
+    font-family: Roman;
+    color: #BF0B0B;
+    font-size: 3.5em;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }

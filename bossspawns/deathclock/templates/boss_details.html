@@ -3,48 +3,50 @@
 {% load vote %}
 
 {% block extra_css %}
-  <link href="{{ STATIC_URL }}css/jquery.countdown.css" type="text/css" rel="stylesheet"/>
+<link href="{{ STATIC_URL }}css/jquery.countdown.css" type="text/css" rel="stylesheet"/>
 {% endblock %}
 
 {% block extra_js %}
-  <script src="{{ STATIC_URL }}js/jquery.countdown.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.countdown.min.js"></script>
 <script type="text/javascript">
-window.server_time = new Date(
-  {{ server_time.year }}, 
-  {{ server_time.month }}, 
-  {{ server_time.day }}, 
-  {{ server_time.hour }}, 
-  {{ server_time.minute }}, 
-  {{ server_time.second }}
-);
+  window.server_time = new Date(
+    {{ server_time.year }}, 
+    {{ server_time.month }}, 
+    {{ server_time.day }}, 
+    {{ server_time.hour }}, 
+    {{ server_time.minute }}, 
+    {{ server_time.second }}
+  );
 
-window.spawn_time = null;
-{% with next_spawn=boss|next_spawn:server %}
-  {% if next_spawn != "Unknown" %}
-    window.spawn_time = new Date(
-      {{ next_spawn.year }}, 
-      {{ next_spawn.month }}, 
-      {{ next_spawn.day }}, 
-      {{ next_spawn.hour }}, 
-      {{ next_spawn.minute }}, 
-      {{ next_spawn.second }}
-    );
-  {% endif %}
-{% endwith %}
+  window.spawn_time = null;
+  {% with next_spawn=boss|next_spawn:server %}
+    {% if next_spawn != "Unknown" %}
+      window.spawn_time = new Date(
+        {{ next_spawn.year }}, 
+        {{ next_spawn.month }}, 
+        {{ next_spawn.day }}, 
+        {{ next_spawn.hour }}, 
+        {{ next_spawn.minute }}, 
+        {{ next_spawn.second }}
+      );
+    {% endif %}
+  {% endwith %}
 
-window.spawn_countdown = null;
-if (window.spawn_time){
-  window.spawn_countdown = spawn_time.getTime() - server_time.getTime();
-  window.spawn_countdown = window.spawn_countdown / 1000;
-  window.spawn_countdown = Math.abs(window.spawn_countdown);
-}
-
-$(function() {
-  if(window.spawn_countdown) {
-    $("#boss_countdown").countdown({until: window.spawn_countdown});
+  window.spawn_countdown = null;
+  if (window.spawn_time){
+    window.spawn_countdown = spawn_time.getTime() - server_time.getTime();
+    window.spawn_countdown = window.spawn_countdown / 1000;
+    window.spawn_countdown = Math.abs(window.spawn_countdown);
   }
-});
 
+  $(function() {
+    if(window.spawn_countdown) {
+      $("#boss_countdown").countdown({until: window.spawn_countdown});
+    }
+  });
+
+  $(function() { $('#id_death_time').datetimepicker(); });
+  
 </script>
 {% endblock %}
 
@@ -53,23 +55,23 @@ $(function() {
 <div id="detail-titles">
   <h1>{{ server.name }} ||</h1><h2>{{ boss.name }},</h2> <h3>{{ boss.zone }}</h3>
 </div>
-  <h3 class="note">Server Timezone: {{ server.tz }}. Submit when a boss dies in server time.</h3>
-  <h3>Server Time: {{ server_time }}</h3>
+
+<h3 class="note">Server Time: {{ server_time }} {{ server.tz }}. Submit when a boss dies in server time.</h3>
 <div id="next-spawn">
   <div id="spawn">
     <h3>next spawn time</h3>
     <h4>{{ boss|next_spawn:server }}</h4>
-    <h4 id="boss_countdown"></h4>
+
   </div>
 
 
-
   <div id="death">
+    <h3>countdown</h3>
+    <div id="boss_countdown"></div>
+  </div>
+  <div id="death_form">
     <h3>submit when boss dies</h3>
     {% if user.is_authenticated %}
-    <script type="text/javascript">
-      $(function() { $('#id_death_time').datetimepicker(); });
-    </script>
     <form action="{% url boss-death server.pk boss.pk %}" method="post">{% csrf_token %}
       {{ death_form.as_p }}
       <input type="submit" value="Submit" />
