@@ -13,9 +13,12 @@ TZ = timezone(settings.TIME_ZONE)
 
 class Server(models.Model):
     """Guild Wars 2 Server"""
+    class Meta:
+        ordering = ['name']
+        
     name = models.CharField(max_length=50)
     tz = TimeZoneField('server time zone')
-
+    
     def __unicode__(self):
         return self.name
 
