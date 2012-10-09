@@ -19,7 +19,9 @@
   <div id="death">
     <h3>submit when boss dies</h3>
     {% if user.is_authenticated %}
-    
+    <script type="text/javascript">
+      $(function() { $('#id_death_time').datetimepicker(); });
+    </script>
     <form action="{% url boss-death server.pk boss.pk %}" method="post">{% csrf_token %}
       {{ death_form.as_p }}
       <input type="submit" value="Submit" />
