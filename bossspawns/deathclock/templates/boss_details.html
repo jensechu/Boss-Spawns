@@ -2,7 +2,12 @@
 {% load boss_filters %}
 {% load vote %}
 
+{% block extra_css %}
+  <link href="{{ STATIC_URL }}css/jquery.countdown.css" type="text/css" rel="stylesheet"/>
+{% endblock %}
+
 {% block extra_js %}
+  <script src="{{ STATIC_URL }}js/jquery.countdown.min.js"></script>
 <script type="text/javascript">
 window.server_time = new Date(
   {{ server_time.year }}, 
@@ -15,7 +20,7 @@ window.server_time = new Date(
 
 window.spawn_time = null;
 {% with next_spawn=boss|next_spawn:server %}
-  {% if next_spawn %}
+  {% if next_spawn != "Unknown" %}
     window.spawn_time = new Date(
       {{ next_spawn.year }}, 
       {{ next_spawn.month }}, 
@@ -26,6 +31,19 @@ window.spawn_time = null;
     );
   {% endif %}
 {% endwith %}
+
+window.spawn_countdown = null;
+if (window.spawn_time){
+  window.spawn_countdown = spawn_time.getTime() - server_time.getTime();
+  window.spawn_countdown = window.spawn_countdown / 1000;
+  window.spawn_countdown = Math.abs(window.spawn_countdown);
+}
+
+$(function() {
+  if(window.spawn_countdown) {
+    $("#boss_countdown").countdown({until: window.spawn_countdown});
+  }
+});
 
 </script>
 {% endblock %}
@@ -41,6 +59,7 @@ window.spawn_time = null;
   <div id="spawn">
     <h3>next spawn time</h3>
     <h4>{{ boss|next_spawn:server }}</h4>
+    <h4 id="boss_countdown"></h4>
   </div>
 
 
