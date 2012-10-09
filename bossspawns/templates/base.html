@@ -3,7 +3,13 @@
   <head>
     <title>GW2 Boss Spawner{% block title %}{% endblock %}</title>
     <link href="{{ STATIC_URL }}css/main.css" type="text/css" rel="stylesheet"/>
+    <link href=" http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" type="text/css" rel="stylesheet"/>
     {% block extra_css %}{% endblock %}
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery-ui-timepicker-addon.js"></script>
+
     {% block extra_js %}{% endblock %}
   </head>
   <body>
@@ -16,9 +22,9 @@
 	<div id="header-login">
 	  {% if user.is_authenticated %}
           <p class="left">Hi, {{ user.username }} <a href="{% url auth_logout %}" class="header-login">Log Out</a></p>
-	  {% else %}  
+	  {% else %}
 	  <p class="not-logged-in">You're not logged in.
-	  <a href="{% url registration_register %}">Register here.</a> or 
+	  <a href="{% url registration_register %}">Register here.</a> or
 	  <a href="{% url auth_login %}">Log In.</a>
 	  </p>
 	  {% endif %}
@@ -32,7 +38,7 @@
       <div id="footer">
 	<p>This is not an offcial ArenaNet site. All Guild Wars 2 references are © 2012 ArenaNet, Inc. All rights reserved. NCsoft, the interlocking NC logo, ArenaNet, Guild Wars, Guild Wars Factions, Guild Wars Nightfall, Guild Wars: Eye of the North, Guild Wars 2, and all associated logos and designs are trademarks or registered trademarks of NCsoft Corporation. All other trademarks are the property of their respective owners.</p>
       </div>
-      
+
 
     </div> <!--- End #wrap --->
   </body>
