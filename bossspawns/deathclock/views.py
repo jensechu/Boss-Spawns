@@ -33,7 +33,6 @@ def boss(request, server_id, boss_id):
 @require_POST
 @login_required
 def boss_death(request, server_id, boss_id):
-    print request.POST
     server = get_object_or_404(Server, pk=server_id)
     boss = get_object_or_404(Boss, pk=boss_id)
     

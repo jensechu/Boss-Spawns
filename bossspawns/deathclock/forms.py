@@ -10,8 +10,7 @@ class DeathCountForm(forms.Form):
     def save(self, user, boss, server):
         if not self.is_valid():
             return None
-        death_time = self.cleaned_data['death_time'].replace(tzinfo=server.tz)
-        death_time = death_time.astimezone(pytz.utc)
+        death_time = self.cleaned_data['death_time']
         death_count = DeathCount.objects.create(
             user=user, 
             boss=boss, 
