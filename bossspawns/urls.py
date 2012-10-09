@@ -19,5 +19,6 @@ urlpatterns = patterns('',
 ## Static routes. If there's a server catchign these above,
 ## this route will never get hit
 urlpatterns += patterns('',
+    url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/static/images/favicon.ico'}),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 )
