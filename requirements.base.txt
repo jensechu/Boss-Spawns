@@ -1,6 +1,7 @@
 ## Reqs
 django
 -e git://github.com/brosner/django-timezones.git#egg=django-timezones
+-e git://github.com/clintecker/django-google-analytics.git#egg=django-google-analytics
 pytz
 South
 django-registration
