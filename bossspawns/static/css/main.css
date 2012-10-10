@@ -70,6 +70,17 @@ p.not-logged-in {
     float: left;
 }
 
+#select-server {
+    border-bottom: 2px solid black;
+    padding-bottom: 15px;
+}
+
+#select-server form {
+    position: relative;
+    left: 30px;
+    top: 2px;
+}
+
 #content-select p {
     position: relative;
     float: left;
@@ -114,7 +125,6 @@ p.not-logged-in {
     color: black;
     font-family: Roman;
     font-size: 1.2em;
-    text-decoration: none;
 }
 
 #content tbody tr td a:hover {
