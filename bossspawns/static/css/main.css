@@ -158,6 +158,12 @@ p.not-logged-in {
     width: 500px;
 }
 
+.twitter-share-button {
+    position: relative;
+    left: 15px;
+    top: 5px;
+}
+
 #next-spawn h3 {
     position: relative;
     float: left;
@@ -203,6 +209,8 @@ p.not-logged-in {
 }
 
 h3.note {
+    font-weight: lighter;
+    font-family: sans-serif;
     margin-bottom: 25px;
 }
 
