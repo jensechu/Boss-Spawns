@@ -58,17 +58,16 @@
 
 <h3 class="note">Server Time: {{ server_time }} {{ server.tz }}. Submit when a boss dies in server time.</h3>
 <div id="next-spawn">
-  <div id="spawn">
+  <div id="spawn-time">
     <h3>next spawn time</h3>
     <h4>{{ boss|next_spawn:server }}</h4>
-
   </div>
 
-
-  <div id="death">
-    <h3>countdown</h3>
+  <div id="death_countdown">
+    <h3 class="shove">countdown</h3>
     <div id="boss_countdown"></div>
   </div>
+
   <div id="death_form">
     <h3>submit when boss dies</h3>
     {% if user.is_authenticated %}

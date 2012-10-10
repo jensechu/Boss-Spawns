@@ -146,12 +146,16 @@ p.not-logged-in {
     height: 100px;
 }
 
-#next-spawn div {
-    height: 100px;
-    width: 300px;
+#next-spawn > div {
     position: relative;
     float: left;
-    margin-bottom: 25px;
+    margin: 20px 0px 50px 0px;
+    width: 300px;
+}
+
+#spawn-time {
+    height: 100px;
+    width: 500px;
 }
 
 #next-spawn h3 {
@@ -160,20 +164,35 @@ p.not-logged-in {
     font-variant: small-caps;
     border-bottom: 1px solid black;
     font-size: 1.5em;
+    font-family: sans-serif;
 }
 
 #next-spawn h4 {
     position: relative;
     float: left;
-    font-size: 1.5em;
-    color: #CCF390;
+    font-size: 2em;
+    font-family: Roman;
+    color: #BF0B0B;
     margin: 15px 0px 0px 0px;
-    width: 200px;
+    width: 325px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-weight: lighter;
+    line-height: 40px;
+}
+
+.shove {
+    left: 30px;
 }
 
 #next-spawn form {
-    margin: 40px 0px 0px 0px;
+    margin: 20px 0px 0px 0px;
 }
+
+#death_form {
+    margin-top: 20px;
+}
+
 #death_form p {
     margin-top: 45px;
     width: 230px;
@@ -210,11 +229,15 @@ a.header-login:visited {
     margin-top: 25px;
 }
 
+#death_countdown {
+    margin-right: 50px;
+}
+
 #boss_countdown {
-    margin-top: 10px;
     background-color: #6C666E;
     border: 0px;
-    right: 30px;
+    margin-top: 50px;
+    height: 100px;
 }
 
 #boss_countdown .countdown_amount {
