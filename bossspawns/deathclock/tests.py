@@ -24,9 +24,9 @@ class BossTest(TestCase):
 
         now = TZ.localize(datetime.now())
         self.death_time = DeathCount.objects.create(
-            boss=self.boss_with_data, 
-            died_at=now, 
-            server=self.server, 
+            boss=self.boss_with_data,
+            died_at=now,
+            server=self.server,
             user=self.user
         )
 
@@ -35,9 +35,9 @@ class BossTest(TestCase):
         now = TZ.localize(datetime.now())
         past = timedelta(days=31)
         self.death_time = DeathCount.objects.create(
-            boss=self.old_boss_with_data, 
+            boss=self.old_boss_with_data,
             died_at=now - past,
-            server=self.server, 
+            server=self.server,
             user=self.user
         )
 
@@ -50,10 +50,10 @@ class BossTest(TestCase):
 
     def test_next_spawn_known(self):
         self.assertIsNotNone(self.boss_with_data.next_spawn(self.server), 'Boss should have a spawn time')
-    
+
     def test_next_spawn_not_in_past(self):
         self.assertIsNone(self.old_boss_with_data.next_spawn(self.server), 'Spawn time would be in the past.')
-        
+
     def test_next_spawn_is_in_future(self):
         now = TZ.localize(datetime.now())
         self.assertGreater(self.boss_with_data.next_spawn(self.server), now, 'Spawn time should be in the future.')
@@ -73,6 +73,29 @@ class DeathFormTest(TestCase):
         self.assertIsNotNone(data)
         self.assertIsInstance(data, DeathCount)
 
+    def test_matching_submittions_dont_dupe(self):
+        # Submit once
+        form = DeathCountForm(self.data)
+        data = form.save(self.user, self.boss, self.server)
+        self.assertIsNotNone(data)
+        self.assertIsInstance(data, DeathCount)
+
+        # SUbmit twice
+        form = DeathCountForm(self.data)
+        data = form.save(self.user, self.boss, self.server)
+        self.assertIsNotNone(data)
+        self.assertIsInstance(data, DeathCount)
+
+        self.assertEqual(DeathCount.objects.count(), 1, "Second matching submission should not create DeathCount")
+
+        # SUbmit a new time
+        self.data['death_time'] = self.data['death_time'].replace("38", "39")
+        form = DeathCountForm(self.data)
+        data = form.save(self.user, self.boss, self.server)
+        self.assertEqual(DeathCount.objects.count(), 2, "Non-existing submission should create DeathCount")
+
+
+
 class DeathCountTests(TestCase):
     def setUp(self):
         self.user = User.objects.create_user("jensen")
@@ -82,21 +105,21 @@ class DeathCountTests(TestCase):
 
         self.death_time = DeathCount.objects.create(
             boss=self.boss,
-            died_at=now(), 
-            server=self.server, 
+            died_at=now(),
+            server=self.server,
             user=self.user
         )
         self.old_death_time = DeathCount.objects.create(
             boss=self.boss,
-            died_at=now() - timedelta(days=30), 
-            server=self.server, 
+            died_at=now() - timedelta(days=30),
+            server=self.server,
             user=self.user
         )
-        
+
     def test_range_search_finds_only_recent_deaths(self):
         deaths = DeathCount.objects.in_spawn_range(self.boss, self.server)
         all_deaths = DeathCount.objects.all()
-        
+
         self.assertGreater(len(deaths), 0, 'Some death counts should have been found.')
         self.assertLess(len(deaths), len(all_deaths), 'There are too many death times.')
         self.assertEqual(self.death_time.pk, deaths[0].pk, 'Did not find the correct death time.')
