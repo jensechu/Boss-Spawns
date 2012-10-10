@@ -22,8 +22,7 @@ class DeathCountManager(models.Manager, DeathFiltersMixin):
         return self.DeathQuerySet(self.model)
 
     def in_spawn_range(self, boss, server):
-        past_buffer = 60 * 10
         death_qs =  self.boss(boss).server(server)
-        limit = now() - timedelta(seconds=boss.respawn_rate + past_buffer)
+        limit = now() - timedelta(seconds=boss.respawn_rate)
         limit = limit.astimezone(pytz.utc)
         return death_qs.filter(died_at__gte=limit)
