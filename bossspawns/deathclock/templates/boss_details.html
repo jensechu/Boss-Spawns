@@ -10,11 +10,11 @@
 <script src="{{ STATIC_URL }}js/jquery.countdown.min.js"></script>
 <script type="text/javascript">
   window.server_time = new Date(
-    {{ server_time.year }}, 
-    {{ server_time.month }}, 
-    {{ server_time.day }}, 
-    {{ server_time.hour }}, 
-    {{ server_time.minute }}, 
+    {{ server_time.year }},
+    {{ server_time.month }},
+    {{ server_time.day }},
+    {{ server_time.hour }},
+    {{ server_time.minute }},
     {{ server_time.second }}
   );
 
@@ -22,11 +22,11 @@
   {% with next_spawn=boss|next_spawn:server %}
     {% if next_spawn != "Unknown" %}
       window.spawn_time = new Date(
-        {{ next_spawn.year }}, 
-        {{ next_spawn.month }}, 
-        {{ next_spawn.day }}, 
-        {{ next_spawn.hour }}, 
-        {{ next_spawn.minute }}, 
+        {{ next_spawn.year }},
+        {{ next_spawn.month }},
+        {{ next_spawn.day }},
+        {{ next_spawn.hour }},
+        {{ next_spawn.minute }},
         {{ next_spawn.second }}
       );
     {% endif %}
@@ -46,7 +46,7 @@
   });
 
   $(function() { $('#id_death_time').datetimepicker(); });
-  
+
 </script>
 {% endblock %}
 
@@ -60,7 +60,15 @@
 <div id="next-spawn">
   <div id="spawn-time">
     <h3>next spawn time</h3>
-    <h4>{{ boss|next_spawn:server }}</h4>
+    <h4>
+      {{ boss|next_spawn:server }}
+      {% if boss|next_spawn:server != "Unknown" %}
+        <!-- Tweet the spawn time, from twitter -->
+          <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ boss.name }} on {{ server.name }} spawns next at {{ boss|next_spawn:server }} ({{ server.tz }}). Keep up at">Tweet</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        <!-- End Twitter -->
+      {% endif %}
+    </h4>
   </div>
 
   <div id="death_countdown">
