@@ -149,7 +149,7 @@ p.not-logged-in {
 #next-spawn > div {
     position: relative;
     float: left;
-    margin: 20px 0px 50px 0px;
+    margin: 20px 0px 0px 0px;
     width: 300px;
 }
 
