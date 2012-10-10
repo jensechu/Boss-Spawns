@@ -133,6 +133,7 @@ p.not-logged-in {
 #detail-titles {
     height: 25px;
     margin-bottom: 50px;
+    padding-top: 25px;
 }
 
 #detail-titles h1, h2, h3{
