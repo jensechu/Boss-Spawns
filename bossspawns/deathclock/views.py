@@ -47,5 +47,6 @@ def boss_death(request, server_id, boss_id):
             'server': server,
             'boss': boss,
             'deaths': DeathCount.objects.in_spawn_range(boss, server),
-            'death_form': form
+            'death_form': form,
+            'server_time': now().astimezone(server.tz)
     })
