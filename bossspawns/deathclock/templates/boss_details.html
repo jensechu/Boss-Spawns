@@ -86,7 +86,7 @@
 
     {% else %}
 
-    <p>You're not logged in. <a href="{% url registration_register %}">Register here.</a> or <a href="{% url auth_login %}">Log In.</a></p>
+    <p><a href="{% url registration_register %}">Register here</a> or <a href="{% url auth_login %}">Log In</a> submit.</p>
 
 
     {% endif %}
@@ -102,6 +102,7 @@
     <tr>
       <th>votes</th>
       <th>last reported death times</th>
+      <th>thanks to</th>
     </tr>
   </thead>
   <tbody>
@@ -115,6 +116,9 @@
       </td>
       <td>
 	{{ death.died_at }}
+      </td>
+      <td>
+	{{ death.user }}
       </td>
     </tr>
     {% endfor %}

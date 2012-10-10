@@ -229,6 +229,13 @@ a.header-login:visited {
     margin-top: 25px;
 }
 
+#death_form a {
+    color: #A3BBDF;
+    margin-left: 5px;
+    position: relative;
+    bottom: 1px;
+}
+
 #death_countdown {
     margin-right: 50px;
 }
