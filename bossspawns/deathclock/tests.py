@@ -88,6 +88,13 @@ class DeathFormTest(TestCase):
 
         self.assertEqual(DeathCount.objects.count(), 1, "Second matching submission should not create DeathCount")
 
+        # SUbmit a new time
+        self.data['death_time'] = self.data['death_time'].replace("38", "39")
+        form = DeathCountForm(self.data)
+        data = form.save(self.user, self.boss, self.server)
+        self.assertEqual(DeathCount.objects.count(), 2, "Non-existing submission should create DeathCount")
+
+
 
 class DeathCountTests(TestCase):
     def setUp(self):
