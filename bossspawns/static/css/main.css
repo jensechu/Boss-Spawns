@@ -107,10 +107,14 @@ p.not-logged-in {
     height: 55px;
     font-family: sans-serif;
     font-size: 1.2em;
+    padding-left: 13px;
 }
 
 #content tbody tr td a {
     color: black;
+    font-family: Roman;
+    font-size: 1.2em;
+    text-decoration: none;
 }
 
 #content tbody tr td a:hover {

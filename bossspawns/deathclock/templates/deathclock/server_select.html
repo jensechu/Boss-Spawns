@@ -1,0 +1,10 @@
+<form action="/server/" method="get">
+  <select name="server">
+    {% for server in server_list %}
+    <option value="{{ server.pk }}">{{ server.name }}</option>
+    {% endfor %}
+
+    <input type="submit" value="Select" />
+
+  </select>
+</form>

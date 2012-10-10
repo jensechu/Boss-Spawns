@@ -8,8 +8,7 @@ from bossspawns.deathclock.models import Server, Boss, DeathCount
 from bossspawns.deathclock.forms import DeathCountForm
 
 def home(request):
-    servers = Server.objects.all()
-    return render(request, 'select_server.html', {'server_list': servers})
+    return render(request, 'index.html', {})
 
 def server(request, server_id=None):
     if server_id == None:
