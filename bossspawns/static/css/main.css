@@ -1,6 +1,5 @@
 body {
     margin: 0px;
-    background-color: #6C666E;
 }
 
 @font-face {
@@ -101,7 +100,7 @@ p.not-logged-in {
 }
 
 #content tbody tr:nth-child(odd) {
-    background-color: white;
+    background-color: #BF0B0B;
 }
 
 #content tbody tr td {
@@ -139,12 +138,17 @@ p.not-logged-in {
     font-size: 1.5em;
     font-weight: lighter;
     margin: 7px 0px 0px 10px;
-   
+}
+
+#death_table {
+    position: relative;
+    top: 50px;
 }
 
 #next-spawn {
     height: 100px;
 }
+
 
 #next-spawn > div {
     position: relative;
@@ -195,9 +199,6 @@ p.not-logged-in {
     margin: 20px 0px 0px 0px;
 }
 
-#death_form {
-    margin-top: 20px;
-}
 
 #death_form p {
     margin-top: 45px;
@@ -249,7 +250,7 @@ a.header-login:visited {
 }
 
 #boss_countdown {
-    background-color: #6C666E;
+    background-color: white;
     border: 0px;
     margin-top: 50px;
     height: 100px;
@@ -261,4 +262,8 @@ a.header-login:visited {
     font-size: 3.5em;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
+}
+
+ul.errorlist {
+    margin-top: 50px;
 }
