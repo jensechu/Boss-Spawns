@@ -18,42 +18,53 @@
     {% block extra_js %}{% endblock %}
   </head>
   <body>
-
-    <a href="https://github.com/jensechu/Boss-Spawns"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
-
-    <div id="wrap">
-
-      <div id="header">
-
-	<div class="page-header">
-	  <h1><a href="/">GW2 Spawns</a><small> this is subtitle</small></h1>
-	</div>
-	<div id="header-login">
-	  {% if user.is_authenticated %}
-          <p class="left">Hi, {{ user.username }} <a href="{% url auth_logout %}" class="header-login">Log Out</a></p>
-	  {% else %}
-	  <p class="not-logged-in">You're not logged in.
-	    <a href="{% url registration_register %}">Register here.</a> or
-	    <a href="{% url auth_login %}">Log In.</a>
-	  </p>
-	  {% endif %}
+      <div class="navbar navbar-inverse navbar-static-top">
+	<div class="navbar-inner">
+	  <a class="brand" href="#">Title</a>
+	  <ul class="nav">
+	    <li class="active"><a href="#">Home</a></li>
+	    <li><a href="#">Link</a></li>
+	    <li><a href="#">Link</a></li>
+	  </ul>
 	</div>
       </div>
 
-      <div id="content">
-	<div id="select-server">
-	  <h2>Select your server:</h2>
-	  {% server_select %}
+    <div class="container-fluid">
+
+
+      <div class="row-fluid">
+
+	<div class="span12">
+	  <div class="page-header">
+	    <h1><a href="/">GW2 Spawns</a><small>Waste less time.</small></h1>
+	  </div>
+	  
+	  <div class="login">
+	    {% if user.is_authenticated %}
+	    <p class="left">Hi, {{ user.username }} <a href="{% url auth_logout %}" class="header-login">Log Out</a></p>
+	    {% else %}
+	    <p class="not-logged-in">You're not logged in.
+	      <a href="{% url registration_register %}">Register here.</a> or
+	      <a href="{% url auth_login %}">Log In.</a>
+	    </p>
+	    {% endif %}
+	  </div>
+
+	  <div id="content">
+	    <div id="select-server">
+	      <h2>Select your server:</h2>
+	      {% server_select %}
+	    </div>
+	    {% block content %}
+
+	    {% endblock %}
+	  </div>
+
+	  <div id="footer">
+	    <p>This is not an offcial ArenaNet site. All Guild Wars 2 references are © 2012 ArenaNet, Inc. All rights reserved. NCsoft, the interlocking NC logo, ArenaNet, Guild Wars, Guild Wars Factions, Guild Wars Nightfall, Guild Wars: Eye of the North, Guild Wars 2, and all associated logos and designs are trademarks or registered trademarks of NCsoft Corporation. All other trademarks are the property of their respective owners.</p>
+	  </div>
 	</div>
-	{% block content %}
-	{% endblock %}
       </div>
-      <div id="footer">
-	<p>This is not an offcial ArenaNet site. All Guild Wars 2 references are © 2012 ArenaNet, Inc. All rights reserved. NCsoft, the interlocking NC logo, ArenaNet, Guild Wars, Guild Wars Factions, Guild Wars Nightfall, Guild Wars: Eye of the North, Guild Wars 2, and all associated logos and designs are trademarks or registered trademarks of NCsoft Corporation. All other trademarks are the property of their respective owners.</p>
-      </div>
-
-
-    </div> <!--- End #wrap --->
-    {% analytics %}
+      {% analytics %}
   </body>
 </html>

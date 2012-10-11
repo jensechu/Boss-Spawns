@@ -99,7 +99,7 @@
 </div>
 
 
-<table id="death_table">
+<table class="table">
   <thead align=left>
     <tr>
       <th>votes</th>
@@ -114,7 +114,7 @@
 	{% if user.is_authenticated %}
 	{% vote_form death %}
 	{% endif %}
-	{{ death.votes.count }}
+	<span class="badge badge-important">{{ death.votes.count }}</span>
       </td>
       <td>
 	{{ death.died_at }}
