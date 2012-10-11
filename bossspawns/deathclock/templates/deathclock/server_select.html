@@ -1,7 +1,7 @@
 <form action="/server/" method="get">
   <select name="server">
     {% for server in server_list %}
-    <option value="{{ server.pk }}">{{ server.name }}</option>
+      <option value="{{ server.pk }}" {% if server == selected_server %}selected{% endif %}>{{ server.name }}</option>
     {% endfor %}
 
     <input type="submit" value="Select" />
