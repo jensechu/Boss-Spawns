@@ -23,24 +23,17 @@ def server(request, server_id=None):
 def boss(request, server_id, boss_id):
     server = get_object_or_404(Server, pk=server_id)
     boss = get_object_or_404(Boss, pk=boss_id)
-    return render(request, 'boss_details.html', {
-            'server': server,
-            'boss': boss,
-            'deaths': DeathCount.objects.in_spawn_range(boss, server),
-            'death_form': DeathCountForm,
-            'server_time': now().astimezone(server.tz)
-    })
+    form = DeathCountForm
 
-@require_POST
-@login_required
-def boss_death(request, server_id, boss_id):
-    server = get_object_or_404(Server, pk=server_id)
-    boss = get_object_or_404(Boss, pk=boss_id)
-    
-    form = DeathCountForm(request.POST)
-    if form.is_valid():
-        form.save(request.user, boss, server)
-        return HttpResponseRedirect(reverse('server-boss', args=[server.pk, boss.pk]))
+    # If the user is posting a form, try to submit it
+    if request.method == 'POST' and request.user.is_authenticated():
+        form = DeathCountForm(request.POST)
+
+        # IF the form is valid, redirect
+        # otherwise, continue and draw the form with errors
+        if form.is_valid():
+            form.save(request.user, boss, server)
+            return HttpResponseRedirect(reverse('server-boss', args=[server.pk, boss.pk]))
 
     return render(request, 'boss_details.html', {
             'server': server,
