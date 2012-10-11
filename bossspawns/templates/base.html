@@ -1,34 +1,40 @@
 {% load analytics %}
 {% load boss_tags %}
 
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html lan="en">
   <head>
     <title>GW2 Boss Spawner{% block title %}{% endblock %}</title>
-    <link href="{{ STATIC_URL }}css/main.css" type="text/css" rel="stylesheet"/>
+    <link href="{{ STATIC_URL }}css/style.css" type="text/css" rel="stylesheet"/>
     <link href=" http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" type="text/css" rel="stylesheet"/>
+    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
     {% block extra_css %}{% endblock %}
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
     <script src="{{ STATIC_URL }}js/jquery-ui-timepicker-addon.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
 
     {% block extra_js %}{% endblock %}
   </head>
   <body>
-<a href="https://github.com/jensechu/Boss-Spawns"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+    <a href="https://github.com/jensechu/Boss-Spawns"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+
     <div id="wrap">
+
       <div id="header">
-	<div id="header-title">
-	  <h1><a href="/">GW2 Spawns</a></h1>
+
+	<div class="page-header">
+	  <h1><a href="/">GW2 Spawns</a><small> this is subtitle</small></h1>
 	</div>
 	<div id="header-login">
 	  {% if user.is_authenticated %}
           <p class="left">Hi, {{ user.username }} <a href="{% url auth_logout %}" class="header-login">Log Out</a></p>
 	  {% else %}
 	  <p class="not-logged-in">You're not logged in.
-	  <a href="{% url registration_register %}">Register here.</a> or
-	  <a href="{% url auth_login %}">Log In.</a>
+	    <a href="{% url registration_register %}">Register here.</a> or
+	    <a href="{% url auth_login %}">Log In.</a>
 	  </p>
 	  {% endif %}
 	</div>
@@ -36,8 +42,8 @@
 
       <div id="content">
 	<div id="select-server">
-	<h2>Select your server:</h2>
-	{% server_select %}
+	  <h2>Select your server:</h2>
+	  {% server_select %}
 	</div>
 	{% block content %}
 	{% endblock %}
