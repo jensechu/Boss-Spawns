@@ -7,7 +7,8 @@ register = template.Library()
 def next_spawn(boss, server):
     return boss.next_spawn(server) or "Unknown"
 
-@register.inclusion_tag('deathclock/server_select.html')
-def server_select():
+@register.inclusion_tag('deathclock/server_select.html', takes_context=True)
+def server_select(context):
     servers = Server.objects.all()
-    return {"server_list": servers}
+    selected = context.get('server')
+    return {"server_list": servers, 'selected_server': selected}
