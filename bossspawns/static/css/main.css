@@ -107,6 +107,7 @@ p.not-logged-in {
 #content th {
     font-variant: small-caps;
     font-size: 1.4em;
+    font-family: sans-serif;
 }
 
 #content tbody tr:nth-child(odd) {
