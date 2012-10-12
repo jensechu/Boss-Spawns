@@ -24,9 +24,9 @@ class DeathCountForm(forms.Form):
             defaults={'user': user}
 
         )
-        if not created:
-            ## TODO: Refactor into vote manager
-            content_type = ContentType.objects.get_for_model(death_count)
-            Vote.objects.get_or_create(user=user, content_type=content_type, thing_id=death_count.pk)
+        ## Always vote for your own submission
+        ## TODO: Refactor into vote manager
+        content_type = ContentType.objects.get_for_model(death_count)
+        Vote.objects.get_or_create(user=user, content_type=content_type, thing_id=death_count.pk)
 
         return death_count
