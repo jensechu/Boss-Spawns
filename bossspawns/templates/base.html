@@ -18,16 +18,24 @@
     {% block extra_js %}{% endblock %}
   </head>
   <body>
-      <div class="navbar navbar-inverse navbar-static-top">
-	<div class="navbar-inner">
-	  <a class="brand" href="#">Title</a>
-	  <ul class="nav">
-	    <li class="active"><a href="#">Home</a></li>
-	    <li><a href="#">Link</a></li>
-	    <li><a href="#">Link</a></li>
-	  </ul>
-	</div>
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="navbar-inner">
+	<a class="brand" href="#">GW2 Boss Spawns</a>
+	<ul class="nav">
+	  <li class="active"><a href="#">Home</a></li>
+	  <li><a href="https://github.com/jensechu/Boss-Spawns">Github Repository</a></li>
+	  <li><a href="https://github.com/jensechu/Boss-Spawns/issues">Report a Bug</a></li>
+	</ul>
+	    {% if user.is_authenticated %}
+	  <p class="navbar-text pull-right">Hi, {{ user.username }} <a href="{% url auth_logout %}" class="header-login">Log Out</a></p>
+	  {% else %}
+	  <p class="not-logged-in">You're not logged in.
+	    <a href="{% url registration_register %}">Register here.</a> or
+	    <a href="{% url auth_login %}">Log In.</a>
+	  </p>
+	  {% endif %}
       </div>
+    </div>
 
     <div class="container-fluid">
 
@@ -40,14 +48,7 @@
 	  </div>
 	  
 	  <div class="login">
-	    {% if user.is_authenticated %}
-	    <p class="left">Hi, {{ user.username }} <a href="{% url auth_logout %}" class="header-login">Log Out</a></p>
-	    {% else %}
-	    <p class="not-logged-in">You're not logged in.
-	      <a href="{% url registration_register %}">Register here.</a> or
-	      <a href="{% url auth_login %}">Log In.</a>
-	    </p>
-	    {% endif %}
+	    
 	  </div>
 
 	  <div id="content">
