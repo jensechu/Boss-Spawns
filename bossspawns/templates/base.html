@@ -20,11 +20,12 @@
   <body>
     <div class="navbar navbar-inverse navbar-static-top">
       <div class="navbar-inner">
-	<a class="brand" href="#">GW2 Boss Spawns</a>
+	<a class="brand" href="/">GW2 Boss Spawns</a>
 	<ul class="nav">
-	  <li class="active"><a href="#">Home</a></li>
+	  <li class="active"><a href="/">Home</a></li>
 	  <li><a href="https://github.com/jensechu/Boss-Spawns">Github Repository</a></li>
 	  <li><a href="https://github.com/jensechu/Boss-Spawns/issues">Report a Bug</a></li>
+	  <li><a href="https://twitter.com/jensechu">Contact</a></li>
 	</ul>
 	    {% if user.is_authenticated %}
 	  <p class="navbar-text pull-right">Hi, {{ user.username }} <a href="{% url auth_logout %}" class="header-login">Log Out</a></p>
@@ -38,22 +39,12 @@
     </div>
 
     <div class="container-fluid">
-
-
       <div class="row-fluid">
-
 	<div class="span12">
-	  <div class="page-header">
-	    <h1><a href="/">GW2 Spawns</a><small>Waste less time.</small></h1>
-	  </div>
-	  
-	  <div class="login">
-	    
-	  </div>
 
 	  <div id="content">
 	    <div id="select-server">
-	      <h2>Select your server:</h2>
+	      <h1>Select your server:</h1>
 	      {% server_select %}
 	    </div>
 	    {% block content %}

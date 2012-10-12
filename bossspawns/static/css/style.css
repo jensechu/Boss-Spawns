@@ -1,0 +1,12 @@
+@font-face {
+    font-family: Roman;
+    src: url('/static/fonts/roman.ttf');
+}
+
+a.brand {
+    font-family: Roman;
+}
+
+#select-server input {
+    margin: 0px 0px 10px 20px;
+}
