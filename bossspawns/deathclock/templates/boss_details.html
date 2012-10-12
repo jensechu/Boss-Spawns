@@ -52,37 +52,36 @@
 
 {% block content %}
 
-  <a href="/server/{{ server.pk }}"><h1>{{ boss.name }} <small>{{ server.name }}</small></h1></a>
-
-<p class="well">Server Time: {{ server_time }} {{ server.tz }}. <span class="text-warning"><strong>Submit when a boss dies in server time.</strong></span></p>
-
-<div class="row-fluid">
+<a href="/server/{{ server.pk }}"><h1>{{ boss.name }} <small>{{ server.name }}</small></h1></a>
+  <p class="space">HEY! Are you a guild on {{ server.name }}?</p>
+  <p>If you want your guild's page up here, and you can commit a few people to consistently submit death times, then message prawn.9728! Only accepting one guild to represent per server. Other people can still submit times, but this should keep the river flowing.</p>
+<div class="row-fluid" id="timer-row">
   <div class="span4">
   <h3>next spawn time</h3>
   <h1>{{ boss|next_spawn:server }}</h1>
   </div>
 
   <div class="span4">
-  <div id="death_countdown">
-    <h3 class="shove">countdown</h3>
-    <div id="boss_countdown"></div>
+    <div id="death_countdown">
+      <h3 class="shove">countdown</h3>
+      <div id="boss_countdown"></div>
+    </div>
   </div>
-  </div>
+
   <div class="span4">
-  <div id="death_form">
-    <h3>submit when boss dies</h3>
-    {% if user.is_authenticated %}
-    <form method="post">{% csrf_token %}
-      {{ death_form.as_p }}
-      <input type="submit" value="Submit" />
-    </form>
-    
-    {% else %}
-    
-    <p><a href="{% url registration_register %}">Register here</a> or <a href="{% url auth_login %}">Log In</a> to submit.</p>
-    
-    
-    {% endif %}
+    <div id="death_form">
+      <h3>submit when boss dies</h3>
+      {% if user.is_authenticated %}
+      <form method="post">{% csrf_token %}
+	{{ death_form.as_p }}
+	<input type="submit" value="Submit" />
+      </form>      
+      {% else %}
+      
+      <p><a href="{% url registration_register %}">Register here</a> or <a href="{% url auth_login %}">Log In</a> to submit.</p>
+      
+      
+      {% endif %}
     </div>
   </div>
 </div>
@@ -99,10 +98,11 @@
     {% for death in deaths.by_vote %}
     <tr>
       <td>
+	<span class="badge badge-important pull-left vote">{{ death.votes.count }}</span>
 	{% if user.is_authenticated %}
 	{% vote_form death %}
 	{% endif %}
-	<span class="badge badge-important">{{ death.votes.count }}</span>
+
       </td>
       <td>
 	{{ death.died_at }}

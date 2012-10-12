@@ -2,13 +2,24 @@
     font-family: Roman;
     src: url('/static/fonts/roman.ttf');
 }
+h3 {
+    font-variant: small-caps;
+}
 
-a.brand {
+#content h1 {
     font-family: Roman;
+}
+
+.navbar a.brand {
+    color: #BF0B0B;
 }
 
 #select-server {
     margin-top: 25px;
+}
+
+#server-select h1 {
+    color: black
 }
 
 #server-form {
@@ -17,6 +28,32 @@ a.brand {
 
 #select-server input {
     margin: 0px 0px 10px 20px;
+}
+
+#server-table th {
+    font-size: 200%;
+}
+
+#server-table tbody tr td:first-child {
+    font-weight: heavy;
+}
+
+table {
+    margin-top: 75px;
+}
+
+#timer-row {
+    margin-top: 50px;
+}
+
+#timer-row h1 {
+    position: relative;
+    bottom: 10px;
+    line-height: 40px;
+}
+
+#timer-row h3 {
+    margin-bottom: 25px;
 }
 
 #death_countdown div {
@@ -38,4 +75,16 @@ a.brand {
     padding-top: 15px;
     margin-top: 70px;
     font-size: .8em;
+}
+
+.space {
+    margin-top: 30px;
+}
+
+table input {
+    float: left;
+}
+
+.vote {
+    margin: 5px 15px 0px 0px;
 }

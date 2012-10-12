@@ -18,7 +18,7 @@
     {% block extra_js %}{% endblock %}
   </head>
   <body>
-    <div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar navbar navbar-static-top">
       <div class="container">
 	<div class="navbar-inner">
 	  <a class="brand" href="/">GW2 Boss Spawns</a>
@@ -44,11 +44,12 @@
       <div class="row-fluid">
 	<div class="span12">
 
-	  <div id="content">
-	    <div id="select-server" class="clearfix well">
+
+	    <div id="select-server" class="clearfix well well-small">
 	      <h1 class="pull-left">Select your server:</h1>
 	      <div id="server-form" class="pull-left">{% server_select %}</div>
 	    </div>
+	    <div id="content">
 	    {% block content %}
 
 	    {% endblock %}
