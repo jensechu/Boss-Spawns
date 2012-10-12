@@ -20,7 +20,7 @@
 
   window.spawn_time = null;
   {% with next_spawn=boss|next_spawn:server %}
-    {% if next_spawn != "Spawned recently. Submit death times." %}
+    {% if next_spawn != "Unknown" %}
       window.spawn_time = new Date(
         {{ next_spawn.year }},
         {{ next_spawn.month }},
@@ -52,24 +52,17 @@
 
 {% block content %}
 
-  <h1>{{ server.name }}</h1>
-  <h2>{{ boss.name }}</h2>
+  <h1>{{ boss.name }} <small>{{ server.name }}</small></h1>
 
-<h3 class="note">Server Time: {{ server_time }} {{ server.tz }}. Submit when a boss dies in server time.</h3>
+<p class="well">Server Time: {{ server_time }} {{ server.tz }}. <span class="text-warning"><strong>Submit when a boss dies in server time.</strong></span></p>
 
 <div class="row-fluid">
   <div class="span4">
   <h3>next spawn time</h3>
-  {% if boss|next_spawn:server != "Unknown" %}
-  <!-- Tweet the spawn time, from twitter -->
-  <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ boss.name }} on {{ server.name }} spawns next at {{ boss|next_spawn:server }} ({{ server.tz }}). Keep up at">Tweet</a>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  <!-- End Twitter -->
-  {% endif %}
+  <p>{{ boss|next_spawn:server }}</p>
   </div>
-    <div class="span4">
-  <h4>{{ boss|next_spawn:server }}</h4>
-  
+
+  <div class="span4">
   <div id="death_countdown">
     <h3 class="shove">countdown</h3>
     <div id="boss_countdown"></div>
