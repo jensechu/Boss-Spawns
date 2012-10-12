@@ -88,3 +88,7 @@ table input {
 .vote {
     margin: 5px 15px 0px 0px;
 }
+
+.not-logged-in {
+    margin-top: 9px;
+}
