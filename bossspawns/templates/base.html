@@ -19,15 +19,16 @@
   </head>
   <body>
     <div class="navbar navbar-inverse navbar-static-top">
-      <div class="navbar-inner">
-	<a class="brand" href="/">GW2 Boss Spawns</a>
-	<ul class="nav">
-	  <li class="active"><a href="/">Home</a></li>
-	  <li><a href="https://github.com/jensechu/Boss-Spawns">Github Repository</a></li>
-	  <li><a href="https://github.com/jensechu/Boss-Spawns/issues">Report a Bug</a></li>
-	  <li><a href="https://twitter.com/jensechu">Contact</a></li>
-	</ul>
-	    {% if user.is_authenticated %}
+      <div class="container">
+	<div class="navbar-inner">
+	  <a class="brand" href="/">GW2 Boss Spawns</a>
+	  <ul class="nav">
+	    <li class="active"><a href="/">Home</a></li>
+	    <li><a href="https://github.com/jensechu/Boss-Spawns">Github Repository</a></li>
+	    <li><a href="https://github.com/jensechu/Boss-Spawns/issues">Report a Bug</a></li>
+	    <li><a href="https://twitter.com/jensechu">Contact</a></li>
+	  </ul>
+	  {% if user.is_authenticated %}
 	  <p class="navbar-text pull-right">Hi, {{ user.username }} <a href="{% url auth_logout %}" class="header-login">Log Out</a></p>
 	  {% else %}
 	  <p class="not-logged-in">You're not logged in.
@@ -35,10 +36,11 @@
 	    <a href="{% url auth_login %}">Log In.</a>
 	  </p>
 	  {% endif %}
+	</div>
       </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
       <div class="row-fluid">
 	<div class="span12">
 
