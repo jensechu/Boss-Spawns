@@ -9,7 +9,7 @@ from bossspawns.deathclock.models import DeathCount
 from bossspawns.vote.models import Vote
 
 class DeathCountForm(forms.Form):
-    death_time = forms.DateTimeField(label='Time of death', initial="Click to enter a time")
+    death_time = forms.DateTimeField(label='In server time:', initial="Click to enter a time")
 
     def save(self, user, boss, server):
         if not self.is_valid():
