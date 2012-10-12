@@ -52,14 +52,14 @@
 
 {% block content %}
 
-  <h1>{{ boss.name }} <small>{{ server.name }}</small></h1>
+  <a href="/server/{{ server.pk }}"><h1>{{ boss.name }} <small>{{ server.name }}</small></h1></a>
 
 <p class="well">Server Time: {{ server_time }} {{ server.tz }}. <span class="text-warning"><strong>Submit when a boss dies in server time.</strong></span></p>
 
 <div class="row-fluid">
   <div class="span4">
   <h3>next spawn time</h3>
-  <p>{{ boss|next_spawn:server }}</p>
+  <h1>{{ boss|next_spawn:server }}</h1>
   </div>
 
   <div class="span4">
@@ -86,7 +86,7 @@
     </div>
   </div>
 </div>
-  
+
 <table class="table">
   <thead align=left>
     <tr>

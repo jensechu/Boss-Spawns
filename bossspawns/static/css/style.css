@@ -33,3 +33,9 @@ a.brand {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }
+
+#footer {
+    padding-top: 15px;
+    margin-top: 70px;
+    font-size: .8em;
+}
