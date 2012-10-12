@@ -45,9 +45,9 @@
 	<div class="span12">
 
 	  <div id="content">
-	    <div id="select-server">
-	      <h1>Select your server:</h1>
-	      {% server_select %}
+	    <div id="select-server" class="clearfix">
+	      <h1 class="pull-left">Select your server:</h1>
+	      <div id="server-form" class="pull-left">{% server_select %}</div>
 	    </div>
 	    {% block content %}
 

@@ -7,6 +7,13 @@ a.brand {
     font-family: Roman;
 }
 
+#select-server {
+    margin-top: 25px;
+}
+
+#server-form {
+    margin: 18px 0px 0px 50px;
+}
 #select-server input {
     margin: 0px 0px 10px 20px;
 }

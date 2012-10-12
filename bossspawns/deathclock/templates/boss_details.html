@@ -20,7 +20,7 @@
 
   window.spawn_time = null;
   {% with next_spawn=boss|next_spawn:server %}
-    {% if next_spawn != "Unknown" %}
+    {% if next_spawn != "Spawned recently. Submit death times." %}
       window.spawn_time = new Date(
         {{ next_spawn.year }},
         {{ next_spawn.month }},
@@ -52,35 +52,30 @@
 
 {% block content %}
 
-<div id="detail-titles">
-  <h1>{{ server.name }} ||</h1><h2>{{ boss.name }}</h2>
-</div>
+  <h1>{{ server.name }}</h1>
+  <h2>{{ boss.name }}</h2>
 
 <h3 class="note">Server Time: {{ server_time }} {{ server.tz }}. Submit when a boss dies in server time.</h3>
-  <div id="content-select">
-  <p>HEY! Are you a guild on {{ server.name }}?</p>
-  <p>If you want your guild's page up here, and you can commit a few people to consistently submit death times, then message prawn.9728! Only accepting one guild to represent per server. Other people can still submit times, but this should keep the river flowing.</p>
-  </div>
-<div id="next-spawn">
-  <div id="spawn-time">
-    <h3>next spawn time</h3>
-      {% if boss|next_spawn:server != "Unknown" %}
-        <!-- Tweet the spawn time, from twitter -->
-          <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ boss.name }} on {{ server.name }} spawns next at {{ boss|next_spawn:server }} ({{ server.tz }}). Keep up at">Tweet</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        <!-- End Twitter -->
-      {% endif %}
-    <h4>
-      {{ boss|next_spawn:server }}
 
-    </h4>
+<div class="row-fluid">
+  <div class="span4">
+  <h3>next spawn time</h3>
+  {% if boss|next_spawn:server != "Unknown" %}
+  <!-- Tweet the spawn time, from twitter -->
+  <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ boss.name }} on {{ server.name }} spawns next at {{ boss|next_spawn:server }} ({{ server.tz }}). Keep up at">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <!-- End Twitter -->
+  {% endif %}
   </div>
-
+    <div class="span4">
+  <h4>{{ boss|next_spawn:server }}</h4>
+  
   <div id="death_countdown">
     <h3 class="shove">countdown</h3>
     <div id="boss_countdown"></div>
   </div>
-
+  </div>
+  <div class="span4">
   <div id="death_form">
     <h3>submit when boss dies</h3>
     {% if user.is_authenticated %}
@@ -88,17 +83,17 @@
       {{ death_form.as_p }}
       <input type="submit" value="Submit" />
     </form>
-
+    
     {% else %}
-
+    
     <p><a href="{% url registration_register %}">Register here</a> or <a href="{% url auth_login %}">Log In</a> to submit.</p>
-
-
+    
+    
     {% endif %}
+    </div>
   </div>
 </div>
-
-
+  
 <table class="table">
   <thead align=left>
     <tr>

@@ -12,25 +12,29 @@
   <table class="table">
     <thead align=left>
       <tr>
-	<th>click boss for details</th>
-	<th>next spawn</th>
-	<th>zone</th>
+	<th></th>
+	{% for boss in bosses %}
+	<th><a href="{% url server-boss server.pk boss.pk %}">{{ boss.name }}</a></th>
+	{% endfor %}
       </tr>
     </thead>
     <tbody>
-      {% for boss in bosses %}
       <tr>
-	<td>
-	  <a href="{% url server-boss server.pk boss.pk %}">{{ boss.name }}</a> 
-	</td>
+	<td>Spawn Time</td>
+	{% for boss in bosses %}
 	<td>
 	  {{ boss|next_spawn:server }}
 	</td>
+	{% endfor %}
+      </tr>
+      <tr>
+	<td>Zone</td>
+	{% for boss in bosses %}
 	<td>
 	  {{ boss.zone }}
 	</td>
+	{% endfor %}
       </tr>
-      {% endfor %}
     </tbody>
   </table>
 </div>
