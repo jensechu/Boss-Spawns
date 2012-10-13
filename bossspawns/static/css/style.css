@@ -72,6 +72,11 @@ table {
     -webkit-text-stroke-color: black;
 }
 
+#death-shove {
+    position: relative;
+    bottom: 15px;
+}
+
 #footer {
     padding-top: 15px;
     margin-top: 70px;

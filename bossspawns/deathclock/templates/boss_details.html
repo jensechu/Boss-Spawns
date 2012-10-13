@@ -70,18 +70,19 @@
 
   <div class="span4">
     <div id="death_form">
-      <h3>submit when boss dies</h3>
-      {% if user.is_authenticated %}
-      <form method="post">{% csrf_token %}
-	{{ death_form.as_p }}
-	<input type="submit" value="Submit" />
-      </form>      
-      {% else %}
-      
-      <p><a href="{% url registration_register %}">Register here</a> or <a href="{% url auth_login %}">Log In</a> to submit.</p>
-      
-      
+	<h3>submit when boss dies</h3>
+	<div id="death-shove">
+	<p class="text-error"><small><strong>'Now' button uses YOUR TIME. NOT server time. Fixing this *very* soon.</strong></small></p>
+	{% if user.is_authenticated %}
+	<form method="post">{% csrf_token %}
+	  {{ death_form.as_p }}
+	  <input type="submit" value="Submit" />
+	</form>      
+	{% else %}
+	
+	<p><a href="{% url registration_register %}">Register here</a> or <a href="{% url auth_login %}">Log In</a> to submit.</p>
       {% endif %}
+      </div>
     </div>
   </div>
 </div>
