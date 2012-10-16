@@ -137,11 +137,14 @@ INSTALLED_APPS = (
     'south',
     'django_nose',
     'registration',
+    'bossspawns.profiles'
 )
 
 ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda o: "/",
 }
+
+AUTH_PROFILE_MODULE = 'profiles.UserProfile'
 
 ACCOUNT_ACTIVATION_DAYS = 1
 
