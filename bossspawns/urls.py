@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^server/(?P<server_id>\d+)/boss/(?P<boss_id>\d+)/$', 'bossspawns.deathclock.views.boss', name='server-boss'),
 
     url(r'^vote/', include('bossspawns.vote.urls')),
+    url(r'^profile/', include('bossspawns.profiles.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
