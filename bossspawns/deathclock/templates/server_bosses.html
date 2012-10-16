@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load boss_tags %}
+{% load tz %}
 
 {% block content %}
 <div id="server-bosses">
@@ -28,6 +29,18 @@
 	</td>
 	{% endfor %}
       </tr>
+      {% if user.is_authenticated %}
+	{% timezone user.get_profile.timezone %}
+      <tr>
+	<td>Your Local Spawn Time</td>
+	{% for boss in bosses %}
+	<td>
+	  {{ boss|next_spawn:server }}
+	</td>
+	{% endfor %}
+      </tr>
+	{% endtimezone %}
+        {% endif %}
       <tr>
 	<td>Zone</td>
 	{% for boss in bosses %}

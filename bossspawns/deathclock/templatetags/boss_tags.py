@@ -1,3 +1,4 @@
+from datetime import datetime
 from django import template
 from bossspawns.deathclock.models import Server
 
