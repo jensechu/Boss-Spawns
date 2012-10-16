@@ -3,5 +3,13 @@
 {% block content %}
 <h1>yolo</h1>
 
+{% if user.is_authenticated %}
+<form method="post">{% csrf_token %}
+  {{ profile_form.as_p }}
+  <input type="submit" value="Submit" />
+</form>      
+
+{% endif %}
+
 {% endblock %}
 
