@@ -23,6 +23,10 @@ h3 {
     margin-top: 10px;
 }
 
+#features li:last-child {
+    font-weight: bold;
+}
+
 .container {
     margin-bottom: 20px;
 }
