@@ -29,17 +29,20 @@
 	</td>
 	{% endfor %}
       </tr>
-      {% if user.is_authenticated %}
-	{% timezone user.get_profile.timezone %}
+
       <tr>
 	<td>Your Local Spawn Time</td>
+      {% if user.is_authenticated %}
+	{% timezone user.get_profile.timezone %}
 	{% for boss in bosses %}
 	<td>
 	  {{ boss|next_spawn:server }}
 	</td>
 	{% endfor %}
-      </tr>
 	{% endtimezone %}
+         {% else %}
+         <td colspan="3"><a href="{% url registration_register %}">Register here</a> or <a href="{% url auth_login %}">Log In</a> to view spawn times in your timezone.</li></td>
+      </tr>
         {% endif %}
       <tr>
 	<td>Zone</td>

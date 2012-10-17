@@ -57,8 +57,18 @@
   <p>If you want your guild's page up here, and you can commit a few people to consistently submit death times, then message prawn.9728! Only accepting one guild to represent per server. Other people can still submit times, but this should keep the river flowing.</p>
 <div class="row-fluid" id="timer-row">
   <div class="span4">
-  <h3>next spawn time</h3>
+  <h3>server spawn time</h3>
   <h1>{{ boss|next_spawn:server }}</h1>
+
+  <h3>local spawn time</h3>
+ {% if user.is_authenticated %}
+  {% timezone user.get_profile.timezone %}
+     <h1>{{ boss|next_spawn:server }}<h1>
+  {% endtimezone %}
+  {% else %}
+  <li>	<p><a href="{% url registration_register %}">Register here</a> or <a href="{% url auth_login %}">Log In</a> to view spawn times in your timezone.</p></li>
+  {% endif %}
+  
   </div>
 
   <div class="span4">
