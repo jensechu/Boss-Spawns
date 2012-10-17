@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from bossspawns.deathclock.models import Server, Boss, DeathCount
 from bossspawns.deathclock.forms import DeathCountForm
 
@@ -32,6 +33,7 @@ def boss(request, server_id, boss_id):
         # IF the form is valid, redirect
         # otherwise, continue and draw the form with errors
         if form.is_valid():
+            messages.success(request, 'Thanks for making Tyria a safer place.')
             form.save(request.user, boss, server)
             return HttpResponseRedirect(reverse('server-boss', args=[server.pk, boss.pk]))
 

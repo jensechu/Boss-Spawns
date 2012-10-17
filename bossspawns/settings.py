@@ -117,7 +117,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
-    "django.contrib.messages.context_processors.messages"
+    "django.contrib.messages.context_processors.messages",
 )
 
 
@@ -141,7 +141,7 @@ INSTALLED_APPS = (
 )
 
 ABSOLUTE_URL_OVERRIDES = {
-    'auth.user': lambda o: "/",
+    'auth.user': lambda o: "/profile/",
 }
 
 AUTH_PROFILE_MODULE = 'profiles.UserProfile'

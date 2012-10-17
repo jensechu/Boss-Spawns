@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>yolo</h1>
+<h1>{{ user.username }} settings</h1>
+
+{% include "messages.html" %}
 
 {% if user.is_authenticated %}
 <form method="post">{% csrf_token %}
@@ -12,4 +14,3 @@
 {% endif %}
 
 {% endblock %}
-

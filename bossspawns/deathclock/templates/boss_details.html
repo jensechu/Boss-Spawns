@@ -72,6 +72,7 @@
     <div id="death_form">
 	<h3>submit when boss dies</h3>
 	<div id="death-shove">
+	  {% include "messages.html" %}
 	<p class="text-error"><small><strong>'Now' button uses YOUR TIME. NOT server time. Fixing this *very* soon.</strong></small></p>
 	{% if user.is_authenticated %}
 	<form method="post">{% csrf_token %}
