@@ -10,12 +10,16 @@ h3 {
     font-family: Roman;
 }
 
+.container {
+    margin-bottom: 20px;
+}
+
 .navbar a.brand {
     color: #BF0B0B;
 }
 
+#
 #select-server {
-    margin-top: 25px;
 }
 
 #server-select h1 {
@@ -35,11 +39,11 @@ h3 {
 }
 
 #server-table tbody tr td:first-child {
-    font-weight: heavy;
+    font-weight: bold;
 }
 
 table {
-    margin-top: 75px;
+    margin-top: 55px;
 }
 
 #timer-row {
@@ -97,4 +101,13 @@ table input {
 
 .not-logged-in {
     margin-top: 9px;
+}
+
+ul.messages, ul.errorlist {
+    list-style-type: none;
+    margin: 0px;
+}
+
+table td.text-center {
+    padding-left: 120px;
 }

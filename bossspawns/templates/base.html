@@ -30,7 +30,7 @@
 	    <li><a href="https://twitter.com/jensechu">Contact</a></li>
 	  </ul>
 	  {% if user.is_authenticated %}
-	  <p class="navbar-text pull-right">Hi, <a href="{% url user-profile %}">{{ user.username }}</a> <a href="{% url auth_logout %}" class="header-login">Log Out</a></p>
+	  <p class="navbar-text pull-right">Hi, <a href="{% url user-profile %}">{{ user.username }}</a> || <a href="{% url auth_logout %}" class="header-login">Log Out</a></p>
 	  {% else %}
 	  <p class="not-logged-in">You're not logged in.
 	    <a href="{% url registration_register %}">Register here.</a> or
@@ -44,6 +44,7 @@
     <div class="container">
       <div class="row-fluid">
 	<div class="span12">
+  
 
 
 	    <div id="select-server" class="clearfix well well-small">

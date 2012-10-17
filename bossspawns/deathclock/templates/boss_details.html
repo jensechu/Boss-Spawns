@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load boss_tags %}
 {% load vote %}
+{% load tz %}
 
 {% block extra_css %}
 <link href="{{ STATIC_URL }}css/jquery.countdown.css" type="text/css" rel="stylesheet"/>
@@ -61,14 +62,14 @@
   <h1>{{ boss|next_spawn:server }}</h1>
 
   <h3>local spawn time</h3>
- {% if user.is_authenticated %}
-  {% timezone user.get_profile.timezone %}
-     <h1>{{ boss|next_spawn:server }}<h1>
-  {% endtimezone %}
+
+  {% if user.is_authenticated %}
+     {% timezone user.get_profile.timezone %}
+         <h1>{{ boss|next_spawn:server }}<h1>
+     {% endtimezone %}
   {% else %}
-  <li>	<p><a href="{% url registration_register %}">Register here</a> or <a href="{% url auth_login %}">Log In</a> to view spawn times in your timezone.</p></li>
+      <p><a href="{% url registration_register %}">Register here</a> or <a href="{% url auth_login %}">Log In</a> to view spawn times in your timezone.</p>
   {% endif %}
-  
   </div>
 
   <div class="span4">
@@ -83,8 +84,9 @@
 	<h3>submit when boss dies</h3>
 	<div id="death-shove">
 	  {% include "messages.html" %}
-	<p class="text-error"><small><strong>'Now' button uses YOUR TIME. NOT server time. Fixing this *very* soon.</strong></small></p>
+
 	{% if user.is_authenticated %}
+	<p class="text-error"><small><strong>'Now' button uses YOUR TIME. Fixing this *very* soon.</strong></small></p>
 	<form method="post">{% csrf_token %}
 	  {{ death_form.as_p }}
 	  <input type="submit" value="Submit" />

@@ -7,4 +7,7 @@ function escape_from_iframe_trap()
 
 $(document).ready(function(){
     escape_from_iframe_trap();
+    $(".errorlist li").addClass("alert-error").addClass("alert");
 });
+
+

@@ -6,12 +6,16 @@
 <div id="server-bosses">
   <a href="#"><h1>{{ server.name }}</h1></a>
   <div id="content-select">
-  <p>HEY! Are you a guild on {{ server.name }}?</p>
-  <p>If you want your guild's page up here, and you can commit a few people to consistently submit death times, then message prawn.9728! Only accepting one guild to represent per server. Other people can still submit times, but this should keep the river flowing.</p>
 
-  </div>
+    <div class="alert alert-info">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <h4>New feature!</h4>
+      <p>You can now view spawn times in YOUR time zone as well as server time! Please click on your user name in top right of the navigation bar to set your timezone. I hope you enjoy.</p>
+    </div>
+
+
   <div id="server-table">
-  <table class="table">
+  <table class="table table-striped">
     <thead align=left>
       <tr>
 	<th></th>
@@ -30,9 +34,9 @@
 	{% endfor %}
       </tr>
 
-      <tr>
-	<td>Your Local Spawn Time</td>
       {% if user.is_authenticated %}
+      <tr>
+      	<td>Local Spawn Time</td>
 	{% timezone user.get_profile.timezone %}
 	{% for boss in bosses %}
 	<td>
@@ -41,7 +45,9 @@
 	{% endfor %}
 	{% endtimezone %}
          {% else %}
-         <td colspan="3"><a href="{% url registration_register %}">Register here</a> or <a href="{% url auth_login %}">Log In</a> to view spawn times in your timezone.</li></td>
+      <tr class="info">
+      	<td>Local Spawn Time</td>
+         <td colspan="3" class="text-center"><a href="{% url registration_register %}">Register here</a> or <a href="{% url auth_login %}">Log In</a> to view spawn times in your timezone.</li></td>
       </tr>
         {% endif %}
       <tr>
@@ -54,8 +60,11 @@
       </tr>
     </tbody>
   </table>
-  <p class="text-success"><strong>*Click on a name to access the countdown, voting, and death time submissions.</strong></p>
+  <p class="text-success pull-right"><strong>*Click on a name to access the countdown, voting, and death time submissions.</strong></p>
   </div>
+
 </div>
+
+
 
 {% endblock %}
