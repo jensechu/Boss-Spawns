@@ -10,6 +10,19 @@ h3 {
     font-family: Roman;
 }
 
+#features h3 {
+    margin: 0px;
+}
+
+#features {
+    position: relative;
+    bottom: 45px;
+}
+
+#features li {
+    margin-top: 10px;
+}
+
 .container {
     margin-bottom: 20px;
 }
