@@ -54,6 +54,13 @@
 {% block content %}
 
 <a href="/server/{{ server.pk }}"><h1>{{ boss.name }} <small>{{ server.name }}</small></h1></a>
+  {% if boss.name == "Jormag the Claw" %}
+     <div class="alert">
+       <button type="button" class="close" data-dismiss="alert">×</button>
+       <h4>NEW TIME: Jormag the Claw</h4>
+       <p>Looks like Jormag is getting scared from all the Halloween festivities. The Claw is now had his respawn rate DOUBLED and has added a 30 minute random spawn window, like Tequatl. Please allow up to 18 minutes after the countdown hits 0 for him to come out from hiding.</p>
+     </div>
+  {% endif %}
   <p class="space">HEY! Are you a guild on {{ server.name }}?</p>
   <p>If you want your guild's page up here, and you can commit a few people to consistently submit death times, then message prawn.9728! Only accepting one guild to represent per server. Other people can still submit times, but this should keep the river flowing.</p>
 <div class="row-fluid" id="timer-row">
