@@ -7,6 +7,14 @@ body {
     src: url('/static/fonts/roman.ttf');
 }
 
+#donate {
+    position: fixed;
+    top: 40px;
+    left: 0px;
+    background: red;
+    border: 5px solid green;
+}
+
 #wrap {
     width: 900px;
     margin-left: auto;

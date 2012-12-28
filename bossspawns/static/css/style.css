@@ -2,6 +2,23 @@
     font-family: Roman;
     src: url('/static/fonts/roman.ttf');
 }
+
+#donate {
+    position: fixed;
+    top: 60px;
+    left: 0px;
+    border-top-left-radius: 0px!important;
+    border-bottom-left-radius: 0px!important;
+    width: 180px;
+    font-size: 8pt;
+    line-height: 10px;
+}
+
+#donate form {
+    padding-left: 40px;
+    margin-bottom: 3px;
+}
+
 h3 {
     font-variant: small-caps;
 }
