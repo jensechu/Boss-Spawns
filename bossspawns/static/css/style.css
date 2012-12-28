@@ -5,17 +5,17 @@
 
 #donate {
     position: fixed;
-    top: 60px;
+    top: 62px;
     left: 0px;
     border-top-left-radius: 0px!important;
     border-bottom-left-radius: 0px!important;
     width: 180px;
+    height: 76px;
     font-size: 8pt;
-    line-height: 10px;
+    text-align: center;
 }
 
 #donate form {
-    padding-left: 40px;
     margin-bottom: 3px;
 }
 
